@@ -28,7 +28,7 @@ config_secret_common = json.loads(open(CONFIG_SECRET_COMMON_FILE).read())
 SECRET_KEY = config_secret_common['django']['secret_key']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -124,3 +124,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(ROOT_DIR, '.static_root')

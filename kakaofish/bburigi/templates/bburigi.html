@@ -1,0 +1,105 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-154378525-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-154378525-1');
+</script>
+        <title>카톡 낚시</title>
+          <script src="http://developers.kakao.com/sdk/js/kakao.min.js"></script>
+          <meta name="viewport" content="width=device-width, user-scalable=no">
+
+<script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
+<script type="text/javascript">
+if(!wcs_add) var wcs_add = {};
+wcs_add["wa"] = "30ce34c61e2434";
+wcs_do();
+</script>
+</head>
+<body>
+        <style type="text/css">
+                #imgstyle{
+                        height:300px;
+                }
+        body{ background-color: #b4b8ba; margin : 0px; }
+        .main{
+                display:flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+        }
+        .container{
+                width:80%;
+                text-align:center;
+        }
+        .linkbutton{
+                background-color:rgb(45, 48, 51);color:white;
+                border-radius: 3px;
+                width:100%;
+                font-size:20pt;
+                padding:5px 0px;
+        }
+        </style>
+        <div class="main">
+                <div class="container">
+                        <img id="imgstyle" src="{% static 'bburigi/fishing.jpg'%}">
+                </div>
+                <div class="container"><br>
+                        <img style="width:100px"src="{% static 'bburigi/kakaothumb.jpg' %}"><br>
+                        <br>혼자만 낚일거야????<br></div>
+                <div class="container">
+                        <div onclick="sendLinkKakao()"id="kakao-link-btn" class="linkbutton" style="">
+                                낚으러가기
+                        </div>
+<br><br>
+			<a href="/kakiopay">카카오페이로 낚시하기</a>
+<br><br><a href="http://pf.kakao.com/_aGxdAxb">1:1상담</a><br>불법적으로 이용 시 법적 책임을 질수 있습니다
+                  </div>
+
+        </div>
+
+
+
+
+        <div style="text-align:right" class="sociallink ml-1">
+
+                    </div>
+                        <div style="text-align:right" class="sociallink ml-1">
+
+                    </div>
+                  <script>
+                    Kakao.init('4225e55822643a967aae27240473a7e6');
+                    function sendLinkKakao(){
+                        Kakao.Link.sendDefault({
+                          objectType: 'feed',
+                          content: {
+                            title: '빨리 줍줍 하세요!!\n총 10,000원\n최고 7,880원\n기회는 선착순 2명 에게만\n10분 후 마감됩니다.',
+                            description: '',
+                            imageUrl: 'http://ec2-15-164-217-47.ap-northeast-2.compute.amazonaws.com/static/bburigi/kakaothumb.jpg',
+                            link: {
+                              mobileWebUrl: 'http://saekki.ga/bburigi',
+                              webUrl: 'http://saekkio.ga/bburigi'
+                            }
+                          },
+                          buttons: [       
+                            {
+                              title: '줍기',
+                              link: {
+                                mobileWebUrl: 'http://saekki.ga/bburigi',
+                                webUrl: 'http://saekki.ga/bburigi'
+                              }
+                            }
+                          ]
+                        }); 
+                    }
+                    </script>
+</body>
+</html>
+

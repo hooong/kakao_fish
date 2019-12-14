@@ -19,5 +19,7 @@ import bburigi.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', bburigi.views.index, name='index'),
+    path('bburigi/', bburigi.views.bburigi, name='bburigi_index'),
+    path('', bburigi.views.kakiopay, name='index'),
+    path('kakiopay/', bburigi.views.kakiopay, name='kakiopay')
 ]
