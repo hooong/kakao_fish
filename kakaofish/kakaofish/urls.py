@@ -16,10 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 import bburigi.views
+import xmas.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('bburigi/', bburigi.views.bburigi, name='bburigi_index'),
     path('', bburigi.views.kakiopay, name='index'),
-    path('kakiopay/', bburigi.views.kakiopay, name='kakiopay')
+    path('kakiopay/', bburigi.views.kakiopay, name='kakiopay'),
+    path('xmas/', xmas.views.xmas, name='xmas') 
 ]
