@@ -1,9 +1,13 @@
 from django.db import models
 
-class face_img(models.Model):
-    idNum = models.IntegerField()
+class Face_img(models.Model):
+    fileName = models.CharField(max_length=255, default='')
+    realAge = models.CharField(max_length=10)
     faceImg = models.ImageField(upload_to="face_img")
+
+    def __str__(self):
+        return self.fileName
     
-class predict_age(models.Model):
+class Predict_age(models.Model):
     realAge = models.IntegerField()
     predictAge = models.IntegerField()
