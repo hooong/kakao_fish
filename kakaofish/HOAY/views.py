@@ -43,6 +43,9 @@ def result(request, gender, age, realage):
     context = {'gender': gender, 'age': age, 'young_or_older': young_or_older, 'age_dis': age_dis}
     return render(request, "result.html", context)
 
+def error(request):
+    return render(request, 'error.html')
+
 # 나이예측
 def predictAge(request, filename):
     CONFIG_SECRET_DIR = os.path.join(settings.ROOT_DIR, '.config_secret')
@@ -65,6 +68,9 @@ def predictAge(request, filename):
     faceImg.delete()
 
     faceInfo_all = result.json()
+    print(list(faceInfo_all))
+    if len(list(faceInfo_all)) == 1:
+        return redirect('error')
     faceInfo = faceInfo_all['result']['faces'][0]['facial_attributes']
     gender = faceInfo['gender']
     m = float(gender['male'])
