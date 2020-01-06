@@ -3,7 +3,7 @@ from .models import *
 from .forms import *
 from django.conf import settings
 from bs4 import BeautifulSoup as bs
-import requests, os
+import requests, os, json
 
 # 사진이랑 나이 입력화면
 def hoaymain(request):
@@ -45,12 +45,16 @@ def result(request, gender, age, realage):
 
 # 나이예측
 def predictAge(request, filename):
+    CONFIG_SECRET_DIR = os.path.join(settings.ROOT_DIR, '.config_secret')
+    CONFIG_SECRET_COMMON_FILE = os.path.join(CONFIG_SECRET_DIR, 'settings_common.json')
+    config_secret_common = json.loads(open(CONFIG_SECRET_COMMON_FILE).read())
+
     faceImg = Face_img.objects.get(fileName=filename)
     faceImgfile = os.path.join(settings.BASE_DIR, 'media/'+str(faceImg.faceImg))
     realAge = faceImg.realAge
 
     API_URL = 'https://kapi.kakao.com/v1/vision/face/detect'
-    APP_KEY = "4225e55822643a967aae27240473a7e6"
+    APP_KEY = config_secret_common['django']['kakaokey']
     headers = {'Authorization': 'KakaoAK {}'.format(APP_KEY)}
     file = { 'file' : open(faceImgfile, 'rb')}
 
