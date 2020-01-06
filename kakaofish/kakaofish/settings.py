@@ -19,7 +19,6 @@ ROOT_DIR = os.path.dirname(BASE_DIR)
 CONFIG_SECRET_DIR = os.path.join(ROOT_DIR, '.config_secret')
 CONFIG_SECRET_COMMON_FILE = os.path.join(CONFIG_SECRET_DIR, 'settings_common.json')
 config_secret_common = json.loads(open(CONFIG_SECRET_COMMON_FILE).read())
-KAKAOAPPKEY = config_secret_common['django']['kakaokey']
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -80,17 +79,24 @@ WSGI_APPLICATION = 'kakaofish.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-		'HOST' : 'hoopa-hong.chmlkpp6zvds.ap-northeast-2.rds.amazonaws.com',
-		'PORT' : '5432',
-        'NAME': 'hoopa',
-		'USER': 'hoopa',
-		'PASSWORD': 'hoopa1234',
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'HOST' : config_secret_common['db']['HOST'],
+            'PORT' : config_secret_common['db']['PORT'],
+            'NAME': config_secret_common['db']['NAME'],
+            'USER': config_secret_common['db']['USER'],
+            'PASSWORD': config_secret_common['db']['PASSWORD'],
+        }
+    }
 
 
 # Password validation
