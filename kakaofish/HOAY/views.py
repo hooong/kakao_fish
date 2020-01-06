@@ -68,8 +68,8 @@ def predictAge(request, filename):
     faceImg.delete()
 
     faceInfo_all = result.json()
-    print(list(faceInfo_all))
-    if len(list(faceInfo_all)) == 1:
+    print(list(faceInfo_all['result']))
+    if len(list(faceInfo_all['result'])) == 2:
         return redirect('error')
     faceInfo = faceInfo_all['result']['faces'][0]['facial_attributes']
     gender = faceInfo['gender']
