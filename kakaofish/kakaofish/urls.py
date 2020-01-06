@@ -14,7 +14,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from django.conf.urls.static import static
+from django.conf import settings
 import bburigi.views
 import xmas.views
 
@@ -23,5 +25,7 @@ urlpatterns = [
     path('bburigi/', bburigi.views.bburigi, name='bburigi_index'),
     path('', xmas.views.xmas, name='index'),
     path('kakiopay/', bburigi.views.kakiopay, name='kakiopay'),
-    path('xmas/', xmas.views.xmas, name='xmas') 
+    path('xmas/', xmas.views.xmas, name='xmas'),
+    path('hoay/', include('HOAY.urls'))
 ]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
