@@ -62,13 +62,11 @@ def predictAge(request, filename):
     file = { 'file' : open(faceImgfile, 'rb')}
 
     result = requests.post(API_URL, headers=headers, files=file)
-    result.raise_for_status()
 
     os.remove(faceImgfile)
     faceImg.delete()
 
     faceInfo_all = result.json()
-    print(list(faceInfo_all['result']))
     if len(list(faceInfo_all['result'])) == 2:
         return redirect('error')
     faceInfo = faceInfo_all['result']['faces'][0]['facial_attributes']
@@ -79,11 +77,9 @@ def predictAge(request, filename):
         gender = 'm'
     else:
         gender = 'f'
-    print(gender)
 
     age = faceInfo['age']
     age = str(round(float(age)))
-    print(age)
 
     tmp_predict = Predict_age()
     tmp_predict.predictAge = age
