@@ -14,8 +14,9 @@ def hoaymain(request):
             face_img = faceimgform.save(commit=False)
             face_img.fileName = filename
             face_img.save()
+            img_id = face_img.id
 
-        return redirect('/hoay/predict/' + str(filename))
+        return redirect('/hoay/predict/' + str(img_id))
     else:
         faceForm = FaceImgForm()
         context = {'faceForm': faceForm}
@@ -23,7 +24,11 @@ def hoaymain(request):
         return render(request, "hoyamain.html", context)
 
 # 결과보여주는 화면
-def result(request, gender, age, realage):
+def result(request, id):
+    pre = Predict_age.objects.get(id=id)
+    gender = pre.gender
+    realage = pre.realAge
+    age = pre.predictAge
 
     if gender == 'm':
         gender = '남자'
@@ -32,13 +37,18 @@ def result(request, gender, age, realage):
 
     age_distance = int(realage) - int(age)
     age_dis = abs(age_distance)
-
+    
+    # 동안 or 노안
     if age_distance < 0:
         young_or_older = 'older'
     elif age_distance > 0:
         young_or_older = 'younger'
     else:
         young_or_older = 'same'
+
+    # 순위 시스템
+    
+
 
     context = {'gender': gender, 'age': age, 'young_or_older': young_or_older, 'age_dis': age_dis}
     return render(request, "result.html", context)
@@ -47,12 +57,12 @@ def error(request):
     return render(request, 'error.html')
 
 # 나이예측
-def predictAge(request, filename):
+def predictAge(request, id):
     CONFIG_SECRET_DIR = os.path.join(settings.ROOT_DIR, '.config_secret')
     CONFIG_SECRET_COMMON_FILE = os.path.join(CONFIG_SECRET_DIR, 'settings_common.json')
     config_secret_common = json.loads(open(CONFIG_SECRET_COMMON_FILE).read())
 
-    faceImg = Face_img.objects.get(fileName=filename)
+    faceImg = Face_img.objects.get(id=id)
     faceImgfile = os.path.join(settings.BASE_DIR, 'media/'+str(faceImg.faceImg))
     realAge = faceImg.realAge
 
@@ -85,6 +95,9 @@ def predictAge(request, filename):
     tmp_predict = Predict_age()
     tmp_predict.predictAge = age
     tmp_predict.realAge = realAge 
+    tmp_predict.diff = abs(int(realAge)-int(age))
+    tmp_predict.gender = gender
     tmp_predict.save()
+    pre_id = tmp_predict.id
 
-    return redirect('/hoay/result/' + str(gender) + '/' + str(age) + '/' + str(realAge))
+    return redirect('/hoay/result/' + str(pre_id))

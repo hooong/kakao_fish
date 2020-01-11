@@ -11,3 +11,5 @@ class Face_img(models.Model):
 class Predict_age(models.Model):
     realAge = models.IntegerField()
     predictAge = models.IntegerField()
+    diff = models.IntegerField(default=0)
+    gender = models.CharField(max_length=10, default='m')
