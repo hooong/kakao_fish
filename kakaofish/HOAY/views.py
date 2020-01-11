@@ -77,6 +77,9 @@ def predictAge(request, id):
     os.remove(faceImgfile)
     faceImg.delete()
 
+    if result.status_code != 200:
+        return redirect('error')
+
     faceInfo_all = result.json()
     print(faceInfo_all)
     if len(list(faceInfo_all['result'])) == 2:
