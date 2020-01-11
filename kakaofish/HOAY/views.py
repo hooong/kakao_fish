@@ -86,7 +86,7 @@ def predictAge(request, id):
     gender = faceInfo['gender']
     m = float(gender['male'])
     f = float(gender['female'])
-    if abs(m - f) < 10: 
+    if abs(m - f) < 6: 
         gender = 'h' 
     else:
         if m > f:
