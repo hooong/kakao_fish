@@ -1,8 +1,7 @@
 from django.db import models
 
 class Face_img(models.Model):
-    fileName = models.CharField(max_length=255, default='')
-    realAge = models.CharField(max_length=10)
+    realAge = models.IntegerField()
     faceImg = models.ImageField(upload_to="face_img")
 
     def __str__(self):

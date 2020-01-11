@@ -12,7 +12,6 @@ def hoaymain(request):
         filename = request.FILES['faceImg']
         if faceimgform.is_valid():
             face_img = faceimgform.save(commit=False)
-            face_img.fileName = filename
             face_img.save()
             img_id = face_img.id
 
@@ -81,7 +80,6 @@ def predictAge(request, id):
         return redirect('error')
 
     faceInfo_all = result.json()
-    print(faceInfo_all)
     if len(list(faceInfo_all['result'])) == 2:
         return redirect('error')
     faceInfo = faceInfo_all['result']['faces'][0]['facial_attributes']
