@@ -33,8 +33,10 @@ def result(request, id):
 
     if gender == 'm':
         gender = '남자'
-    else:
+    elif gender == 'f':
         gender = '여자'
+    else:
+        gender = '자웅동체'
     
     # 동안 or 노안
     if diff > 0:
@@ -83,10 +85,13 @@ def predictAge(request, id):
     gender = faceInfo['gender']
     m = float(gender['male'])
     f = float(gender['female'])
-    if m > f:
-        gender = 'm'
+    if abs(m - f) < 10: 
+        gender = 'h' 
     else:
-        gender = 'f'
+        if m > f:
+            gender = 'm'
+        else:
+            gender = 'f'
 
     age = faceInfo['age']
     age = str(round(float(age)))
