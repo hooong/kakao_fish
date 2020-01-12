@@ -15,8 +15,14 @@
                     <div class="retroElem">
                         <h3>
                                 당신은 {{age}}살 {{gender}}로 보여요.<br><br>
-                                실제나이보다 {{age_dis}}살 어려 보이네요.<br><br>
-                                당신의 동안지수는 상위 ??% < ?? > 티어 입니다.
+                            {% if young_or_older == 'younger' %}
+                                WOW 실제나이보다 {{age_dis}}살 어려 보이네요.<br><br>
+                            {% elif young_or_older == 'older' %}
+                                당신은 실제나이보다 {{age_dis}}살 나이들어 보이네욬ㅋㅋㅋ<br><br>
+                            {% else %}
+                                실제나이랑 똑같이 보여요.<br><br>
+                            {% endif %}
+                            당신의 동안지수는 상위 {{percent}}% , {{tier}} 티어 입니다.
                         </h3>
                         
 
@@ -38,16 +44,7 @@
             <img class="tierImg" src="{% static 'HOAY/5.png' %}">
             {%else%}
             {%endif%}
-            {% if young_or_older == 'younger' %}
-                <h2>ㅊㅋㅊㅋ!!</h2>
-                <h3></h3>
-            {% elif young_or_older == 'older' %}
-                <h2>ㅉㅉ...</h2>
-                <h3>당신은 실제나이보다 {{age_dis}}살 늙어보임ㅋㅋ</h3>
-            {% else %}
-                <h2>뭐라 할말이 없네...</h2>
-                <h3>예측결과랑 실제나이가 같음.</h3>
-            {% endif %}
+
     </body>
        
 </html>
