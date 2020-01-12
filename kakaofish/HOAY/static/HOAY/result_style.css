@@ -1,0 +1,14 @@
+@font-face { font-family: 'DOSMyungjo'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/DOSMyungjo.woff') format('woff'); font-weight: normal; font-style: normal; }
+body{
+
+	/*background-color:#ff9999;   */
+	/* 분홍 */
+	background-color:#C2B28F;
+}
+#logo{
+	font-family: DOSMyungjo;
+	color : #f7e600;
+	text-shadow: 5px 3px black;
+	font-size:40pt;
+	margin : 10px;
+}

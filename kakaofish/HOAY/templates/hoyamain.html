@@ -1,6 +1,67 @@
-<h1>사진 넣고 나이 입력</h1>
-<form action="" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{faceForm}}
-    <input type="submit"/>
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+		<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+	<title></title>
+	<meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" href="{% static 'HOAY/style.css'%}">
+</head>
+<body>
+    <p id="logo"> hoopa </p>
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+<div class="flexBox">
+
+	<div class="contain">
+        <span>현재 나이를 입력해주세요.</span>
+        <input type="number" name="realAge" required="" placeholder="ex)21" id="id_realAge">
+	</div>
+</div>
+<div class="flexBox">
+		
+	<div class="contain">
+		<span id="containPannel">사진을 첨부해주세요</span>
+		<label for="id_faceImg" style="padding:100px 100px">
+			
+			<i id="imageIcon" class="fas fa-images fa-3x"></i>
+            <input type="file" name="faceImg" accept="image/*" id="id_faceImg" onchange="previewFile()" required />        </label>
+			<img src="" style="height:150px;margin:10px;"  alt="이미지 미리보기...">
+		
+	</div>
+	
+</div>
+
+
+    <!-- {{faceForm}} -->
+
+<div class="flexBox">
+        <div class="contain">
+<input class="smt" type="submit"/>
+</div>
+</div>
 </form>
+</body>
+</html>
+
+<script>
+function previewFile() {
+  var preview = document.querySelector('img');
+  var file    = document.getElementById('id_faceImg').files[0];
+  var label = document.querySelector('label');
+  var containPannel = document.getElementById("containPannel");
+  var reader  = new FileReader();
+  
+  reader.addEventListener("load", function () {
+    preview.src = reader.result;
+	preview.style.display="block";
+	label.style.display="none";
+	containPannel.innerText="사진이 선택되었습니다.";
+  }, false);
+
+  if (file) {
+    reader.readAsDataURL(file);
+  }
+}
+</script>
+
