@@ -50,3 +50,8 @@ h3 {
 .tierImg{
     width:100px;
 }
+.blurEffect {
+    filter: blur(10px);
+    -webkit-filter: blur(5px);
+  }
+  

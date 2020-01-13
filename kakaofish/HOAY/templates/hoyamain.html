@@ -9,7 +9,7 @@
 </head>
 <body>
     <p id="logo"> hoopa </p>
-    <form action="" method="POST" enctype="multipart/form-data">
+    <form id="frm" action="" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
 <div class="flexBox">
 
@@ -36,8 +36,8 @@
     <!-- {{faceForm}} -->
 
 <div class="flexBox">
-        <div class="contain">
-<input class="smt" type="submit"/>
+        <div class="contain" onclick="smt()">
+            제출
 </div>
 </div>
 </form>
@@ -45,6 +45,20 @@
 </html>
 
 <script>
+function smt(){
+    var imgs = document.getElementById('containPannel').innerText;
+    var inputtext = document.getElementById('id_realAge').value;
+    if(imgs == '사진을 첨부해주세요' ||  inputtext=="")
+    alert("나이 또는 사진을 첨부하고 제출해주세요.");
+    else{
+        document.getElementById('frm').submit();
+    }
+
+    // {
+    //     alert("에러");
+    // }else{  }
+    
+}
 function previewFile() {
   var preview = document.querySelector('img');
   var file    = document.getElementById('id_faceImg').files[0];

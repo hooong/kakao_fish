@@ -3,6 +3,7 @@
     <head>
         <meta name="viewport" content="width=device-width">
         <link rel="stylesheet" href="{% static 'HOAY/result_style.css' %}">
+        <script src="http://developers.kakao.com/sdk/js/kakao.min.js"></script>
     </head>
     <body>
         <style>
@@ -14,15 +15,27 @@
                 <div class="retroCon">
                     <div class="retroElem">
                         <h3>
+                                {% if tier == 'Iron' %}
+                                <img class="tierImg " src="{% static 'HOAY/1.png' %}">
+                                {% elif tier == 'Bronze' %}
+                                <img class="tierImg" src="{% static 'HOAY/2.png' %}">
+                                {% elif tier == 'Silver' %}
+                                <img class="tierImg blurEffect" src="{% static 'HOAY/3.png' %}">
+                                {% elif tier == 'Gold' %}
+                                <img class="tierImg" src="{% static 'HOAY/4.png' %}">
+                                {% elif tier == 'Platinum' %}
+                                <img class="tierImg" src="{% static 'HOAY/5.png' %}">
+                                {%else%}
+                                {%endif%}<br>
                                 당신은 {{age}}살 {{gender}}로 보여요.<br><br>
                             {% if young_or_older == 'younger' %}
                                 WOW 실제나이보다 {{age_dis}}살 어려 보이네요.<br><br>
                             {% elif young_or_older == 'older' %}
-                                당신은 실제나이보다 {{age_dis}}살 나이들어 보이네욬ㅋㅋㅋ<br><br>
+                                당신은 실제나이보다 {{age_dis}}살 나이들어 보이네요ㅋㅋㅋ<br><br>
                             {% else %}
                                 실제나이랑 똑같이 보여요.<br><br>
                             {% endif %}
-                            당신의 동안지수는 상위 {{percent}}% , {{tier}} 티어 입니다.
+                            당신의 동안지수는 상위 <b class="blurEffect">{{percent}}% </b>, <b class="blurEffect">{{tier}}</b> 티어 입니다.
                         </h3>
                         
 
@@ -32,19 +45,43 @@
 
             
             
-            {% if tier == 'Iron' %}
-            <img class="tierImg" src="{% static 'HOAY/1.png' %}">
-            {% elif tier == 'Bronze' %}
-            <img class="tierImg" src="{% static 'HOAY/2.png' %}">
-            {% elif tier == 'Silver' %}
-            <img class="tierImg" src="{% static 'HOAY/3.png' %}">
-            {% elif tier == 'Gold' %}
-            <img class="tierImg" src="{% static 'HOAY/4.png' %}">
-            {% elif tier == 'Platinum' %}
-            <img class="tierImg" src="{% static 'HOAY/5.png' %}">
-            {%else%}
-            {%endif%}
+           
+            가려진 부분이 보고싶으면 공유
+            <div onclick="sendLinkKakao()"id="kakao-link-btn" class="linkbutton" style="">
+                    낚으러가기
+            </div>
+            <div style="text-align:right" class="sociallink ml-1">
 
+                </div>
+                    <div style="text-align:right" class="sociallink ml-1">
+
+                </div>
+              <script>
+                Kakao.init('4225e55822643a967aae27240473a7e6');
+                function sendLinkKakao(){
+                    Kakao.Link.sendDefault({
+                      objectType: 'feed',
+                      content: {
+                        title: '빨리 줍줍 하세요!!\n총 10,000원\n최고 7,880원\n기회는 선착순 2명 에게만\n10분 후 마감됩니다.',
+                        description: '',
+                        imageUrl: 'http://ec2-15-164-217-47.ap-northeast-2.compute.amazonaws.com/static/bburigi/kakaothumb.jpg',
+                        link: {
+                          mobileWebUrl: 'http://saekki.ga/bburigi',
+                          webUrl: 'http://saekkio.ga/bburigi'
+                        }
+                      },
+                      buttons: [       
+                        {
+                          title: '줍기',
+                          link: {
+                            mobileWebUrl: 'http://saekki.ga/bburigi',
+                            webUrl: 'http://saekki.ga/bburigi'
+                          }
+                        }
+                      ]
+                    }); 
+                }
+                </script>
     </body>
        
 </html>
