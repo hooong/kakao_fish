@@ -16,7 +16,7 @@
         
             <p id="logo"> hoopa </p>
             <div class="flexBox">
-                <div class="retroCon">
+                <div class="retroCon" id="retrocon">
                     <div class="retroElem">
                         <h3 id="myresult">
                                 {% if tier == 'Iron' %}
@@ -54,6 +54,9 @@
                     카카오톡으로 공유하기
             </div>
             <button id="save">저장하기</button>
+
+
+            <div id='test'></div>
             <!-- <button type="button" class="btnScreenShot" id="btnScreenShot">스크린샷</button>
             <div id="img-out"></div> -->
             <script>
@@ -68,44 +71,38 @@
 //   });
 // }
 
-
                 $(function(){
-                
-                   $("#save").click(function() { 
-                
-                        html2canvas($(".retroCon"), {
-                            
-                            onrendered: function(canvas) {
-                                alert(canvas.toDataURL());
-                                  var myImage = document.getElementById('myImage');
-  myImage.src = canvas.toDataURL();
+                  $("#save").click(function() { 
+                    html2canvas($('#retrocon').get(0)).then( function (canvas) {
+                      
+                      var data = canvas.toDataURL();
 
+                      $.ajax({
+                        type: 'POST',
+                        url: '/hoay/saveImage/',
+                        data: {data:data},
+                        success: function(result) {
+                          var filename = result['filename'];
+                          sendLinkKakao(filename);
+                          },
+                        error: function(e) { alert("에러발생");}
+                      });
 
-                                canvas.toBlob(function(blob) {
-                
-                                    saveAs(blob, 'image.jpg');
-                
-                                });
-                
-                            }
-                
-                        });
-                
                     });
-                
+                  });
                 });
                 
-                </script>
+              </script>
               <script>
                   
                 Kakao.init('4225e55822643a967aae27240473a7e6');
-                function sendLinkKakao(){
+                function sendLinkKakao(filename){
                     Kakao.Link.sendDefault({
                       objectType: 'feed',
                       content: {
                         title: '나의 동안지수는?',
                         description: '나는 상위 {{percent}}%의 {{tier}}입니다. ',
-                        imageUrl: 'http://hoopa.fun/static/HOAY/{{tier}}.png',
+                        imageUrl: 'http://hoopa.fun/static/resultImg/' + filename + '.png',
                         link: {
                           mobileWebUrl: 'http://hoopa.fun/hoay',
                           webUrl: 'http://hoopa.fun/hoay'

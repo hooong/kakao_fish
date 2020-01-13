@@ -6,5 +6,6 @@ urlpatterns = [
     path('', views.hoaymain, name="hoaymain"),
     path('result/<int:id>', views.result, name="hoayresult"),
     path('predict/<int:id>', views.predictAge, name='predictAge'),
-    path('error/', views.error, name='error')
+    path('error/', views.error, name='error'),
+    path('saveImage/', views.canvasToImage, name='saveImage')
 ]

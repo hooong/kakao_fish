@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
+from django.views.decorators.csrf import csrf_exempt
 from .models import *
 from .forms import *
 from django.conf import settings
 from bs4 import BeautifulSoup as bs
-import requests, os, json
+from django.http import JsonResponse
+import requests, os, json, random, base64
 
 # 사진이랑 나이 입력화면
 def hoaymain(request):
@@ -99,7 +101,7 @@ def predictAge(request, id):
 
     tmp_predict = Predict_age()
     tmp_predict.predictAge = age
-    tmp_predict.realAge = realAge 
+    tmp_predict.realAge = realAge
     tmp_predict.diff = int(age) - int(realAge)
     tmp_predict.gender = gender
     tmp_predict.save()
@@ -134,3 +136,20 @@ def tierSystem(diff):
         tier = 'Iron'
 
     return tier, percent
+
+# canvas 이미지 저장
+@csrf_exempt
+def canvasToImage(request):
+    data = request.POST.__getitem__('data')
+    data = data[22:]
+    number = random.randrange(1,10000)
+
+    path = str(os.path.join(settings.STATIC_ROOT, 'resultImg/'))
+    filename = 'image' + str(number) + '.png'
+    
+    image = open(path+filename, "wb")
+    image.write(base64.b64decode(data))
+    image.close()
+
+    answer = {'filename': filename}
+    return JsonResponse(answer)
