@@ -62,11 +62,12 @@
                 Kakao.init('4225e55822643a967aae27240473a7e6');
                 function sendLinkKakao(){
                     var myresult = document.getElementById('myresult').innerText;
+                    alert(myresult);
                     Kakao.Link.sendDefault({
                       objectType: 'feed',
                       content: {
                         title: '나의 동안지수는?',
-                        description: myresult,
+                        description: '나는 {{percent}}%의 {{tier}}입니다. ',
                         imageUrl: 'http://hoopa.fun/static/HOAY/{{tier}}.png',
                         link: {
                           mobileWebUrl: 'http://hoopa.fun/hoay',
