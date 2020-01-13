@@ -14,7 +14,7 @@
             <div class="flexBox">
                 <div class="retroCon">
                     <div class="retroElem">
-                        <h3>
+                        <h3 id="myresult">
                                 {% if tier == 'Iron' %}
                                 <img class="tierImg " src="{% static 'HOAY/1.png' %}">
                                 {% elif tier == 'Bronze' %}
@@ -47,6 +47,7 @@
             
            
             가려진 부분이 보고싶으면 공유
+            
             <div onclick="sendLinkKakao()"id="kakao-link-btn" class="linkbutton" style="">
                     낚으러가기
             </div>
@@ -57,25 +58,27 @@
 
                 </div>
               <script>
+                  
                 Kakao.init('4225e55822643a967aae27240473a7e6');
                 function sendLinkKakao(){
+                    var myresult = document.getElementById('myresult').innerText;
                     Kakao.Link.sendDefault({
                       objectType: 'feed',
                       content: {
-                        title: '빨리 줍줍 하세요!!\n총 10,000원\n최고 7,880원\n기회는 선착순 2명 에게만\n10분 후 마감됩니다.',
-                        description: '',
-                        imageUrl: 'http://ec2-15-164-217-47.ap-northeast-2.compute.amazonaws.com/static/bburigi/kakaothumb.jpg',
+                        title: '나의 동안지수는?',
+                        description: myresult,
+                        imageUrl: 'http://hoopa.fun/static/HOAY/{{tier}}.png',
                         link: {
-                          mobileWebUrl: 'http://saekki.ga/bburigi',
-                          webUrl: 'http://saekkio.ga/bburigi'
+                          mobileWebUrl: 'http://hoopa.fun/hoay',
+                          webUrl: 'http://hoopa.fun/hoay'
                         }
                       },
                       buttons: [       
                         {
-                          title: '줍기',
+                          title: '테스트하기',
                           link: {
-                            mobileWebUrl: 'http://saekki.ga/bburigi',
-                            webUrl: 'http://saekki.ga/bburigi'
+                            mobileWebUrl: 'http://hoopa.fun/hoay',
+                            webUrl: 'http://hoopa.fun/hoay'
                           }
                         }
                       ]
