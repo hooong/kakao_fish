@@ -4,6 +4,10 @@
         <meta name="viewport" content="width=device-width">
         <link rel="stylesheet" href="{% static 'HOAY/result_style.css' %}">
         <script src="http://developers.kakao.com/sdk/js/kakao.min.js"></script>
+        <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+        <script src="https://cdn.rawgit.com/eligrey/FileSaver.js/5ed507ef8aa53d8ecfea96d96bc7214cd2476fd2/FileSaver.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.js"></script>
+
     </head>
     <body>
         <style>
@@ -36,6 +40,7 @@
                                 실제나이랑 똑같이 보여요.<br><br>
                             {% endif %}
                             당신의 동안지수는 상위 <b class="blurEffect">{{percent}}% </b>, <b class="blurEffect">{{tier}}</b> 티어 입니다.
+                            <div style="text-align:right; font-size:12pt;">http://hoopa.fun</div>
                         </h3>
                         
 
@@ -43,26 +48,41 @@
                 </div>
             </div>
 
-            
-            
-           
-            가려진 부분이 보고싶으면 공유
+            가려진 부분이 궁금하다면 
             
             <div onclick="sendLinkKakao()"id="kakao-link-btn" class="linkbutton" style="">
-                    낚으러가기
+                    카카오톡으로 공유하기
             </div>
-            <div style="text-align:right" class="sociallink ml-1">
+            <button id="save">저장하기</button>
+            <script type="text/javascript">
 
-                </div>
-                    <div style="text-align:right" class="sociallink ml-1">
-
-                </div>
+                $(function(){
+                
+                   $("#save").click(function() { 
+                
+                        html2canvas($(".retroCon"), {
+                
+                            onrendered: function(canvas) {
+                
+                                canvas.toBlob(function(blob) {
+                
+                                    saveAs(blob, 'image.png');
+                
+                                });
+                
+                            }
+                
+                        });
+                
+                    });
+                
+                });
+                
+                </script>
               <script>
                   
                 Kakao.init('4225e55822643a967aae27240473a7e6');
                 function sendLinkKakao(){
-                    var myresult = document.getElementById('myresult').innerText;
-                    alert(myresult);
                     Kakao.Link.sendDefault({
                       objectType: 'feed',
                       content: {
