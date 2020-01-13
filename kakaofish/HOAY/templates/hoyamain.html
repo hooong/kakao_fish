@@ -34,11 +34,11 @@
 
 
     <!-- {{faceForm}} -->
-
 <div class="flexBox">
         <div class="contain" onclick="smt()">
             제출
 </div>
+
 </div>
 </form>
 </body>
@@ -50,6 +50,7 @@ function smt(){
     var inputtext = document.getElementById('id_realAge').value;
     if(imgs == '사진을 첨부해주세요' ||  inputtext=="")
     alert("나이 또는 사진을 첨부하고 제출해주세요.");
+
     else{
         document.getElementById('frm').submit();
     }

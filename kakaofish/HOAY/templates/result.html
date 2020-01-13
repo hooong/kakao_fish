@@ -7,7 +7,7 @@
         <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
         <script src="https://cdn.rawgit.com/eligrey/FileSaver.js/5ed507ef8aa53d8ecfea96d96bc7214cd2476fd2/FileSaver.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.js"></script>
-
+        <script src="http://html2canvas.hertzen.com/dist/html2canvas.js"></script>
     </head>
     <body>
         <style>
@@ -49,26 +49,42 @@
             </div>
 
             가려진 부분이 궁금하다면 
-            
+            <img id="myImage">
             <div onclick="sendLinkKakao()"id="kakao-link-btn" class="linkbutton" style="">
                     카카오톡으로 공유하기
             </div>
             <button id="save">저장하기</button>
-            <script type="text/javascript">
+            <!-- <button type="button" class="btnScreenShot" id="btnScreenShot">스크린샷</button>
+            <div id="img-out"></div> -->
+            <script>
+//             var $btn = document.getElementById('btnScreenShot');
+// $btn.addEventListener('mousedown', onScreenShotClick);
+
+
+// function onScreenShotClick(ev){ //스크린샷 기능
+// alert(canvas.toDataURL());
+//   html2canvas(document.querySelector(".retroCon")).then(canvas => {
+//     document.getElementById('img-out').appendChild(canvas)
+//   });
+// }
+
 
                 $(function(){
                 
                    $("#save").click(function() { 
                 
                         html2canvas($(".retroCon"), {
-                
+                            
                             onrendered: function(canvas) {
+                                alert(canvas.toDataURL());
+                                var myImage = document.getElementById('myImage');
+  myImage.src = canvas.toDataURL();
+
+                                // canvas.toBlob(function(blob) {
                 
-                                canvas.toBlob(function(blob) {
+                                //     saveAs(blob, 'image.jpg');
                 
-                                    saveAs(blob, 'image.png');
-                
-                                });
+                                // });
                 
                             }
                 
@@ -83,12 +99,28 @@
                   
                 Kakao.init('4225e55822643a967aae27240473a7e6');
                 function sendLinkKakao(){
+                    html2canvas($(".retroCon"), {
+                            
+                            onrendered: function(canvas) {
+                                // alert(canvas.toDataURL());
+                                var myImage = document.getElementById('myImage');
+  myImage.src = canvas.toDataURL();
+
+                                // canvas.toBlob(function(blob) {
+                
+                                //     saveAs(blob, 'image.jpg');
+                
+                                // });
+                
+                            }
+                
+                        });
                     Kakao.Link.sendDefault({
                       objectType: 'feed',
                       content: {
                         title: '나의 동안지수는?',
                         description: '나는 상위 {{percent}}%의 {{tier}}입니다. ',
-                        imageUrl: 'http://hoopa.fun/static/HOAY/{{tier}}.png',
+                        imageUrl: canvas.toDataURL(),
                         link: {
                           mobileWebUrl: 'http://hoopa.fun/hoay',
                           webUrl: 'http://hoopa.fun/hoay'
