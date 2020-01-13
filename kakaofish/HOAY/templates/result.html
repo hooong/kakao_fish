@@ -79,7 +79,7 @@
 
                       $.ajax({
                         type: 'POST',
-                        url: '/hoay/saveImage/',
+                        url: 'http://hoopa.fun/hoay/saveImage/',
                         data: {data:data},
                         success: function(result) {
                           var filename = result['filename'];
@@ -102,7 +102,7 @@
                       content: {
                         title: '나의 동안지수는?',
                         description: '나는 상위 {{percent}}%의 {{tier}}입니다. ',
-                        imageUrl: 'http://hoopa.fun/static/resultImg/' + filename + '.png',
+                        imageUrl: 'http://hoopa.fun/static/resultImg/' + filename,
                         link: {
                           mobileWebUrl: 'http://hoopa.fun/hoay',
                           webUrl: 'http://hoopa.fun/hoay'
