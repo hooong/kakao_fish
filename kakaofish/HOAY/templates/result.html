@@ -27,19 +27,19 @@
                             {% else %}
                                 실제나이랑 똑같이 보여요.<br><br>
                             {% endif %}
-                            당신의 동안지수는 상위 <b class="blurEffect">{{percent}}% </b>, <b class="blurEffect">{{tier}}</b> 티어 입니다.
+                            당신의 동안지수는 상위 <b class="blurEffect">{{percent}}% </b>, <b class="blurEffect">{{tier}}</b> 티어 입니다.<br>
                             {% if tier == 'Iron' %}
-                            <img class="tierImg " src="{% static 'HOAY/1.png' %}">
+                            <img class="tierImg blurEffect" src="{% static 'HOAY/1.png' %}">
                             {% elif tier == 'Bronze' %}
-                            <img class="tierImg" src="{% static 'HOAY/2.png' %}">
+                            <img class="tierImg blurEffect" src="{% static 'HOAY/2.png' %}">
                             {% elif tier == 'Silver' %}
                             <img class="tierImg blurEffect" src="{% static 'HOAY/3.png' %}">
                             {% elif tier == 'Gold' %}
-                            <img class="tierImg" src="{% static 'HOAY/4.png' %}">
+                            <img class="tierImg blurEffect" src="{% static 'HOAY/4.png' %}">
                             {% elif tier == 'Platinum' %}
-                            <img class="tierImg" src="{% static 'HOAY/5.png' %}">
+                            <img class="tierImg blurEffect" src="{% static 'HOAY/5.png' %}">
                             {%else%}
-                            <img class="tierImg" src="{% static 'HOAY/6.png' %}">
+                            <img class="tierImg blurEffect" src="{% static 'HOAY/6.png' %}">
                             {%endif%}
                             <div style="float:right; font-size:12pt;">http://hoopa.fun</div>
                         </h3>
@@ -99,15 +99,15 @@
                 가려진 부분이 궁금하다면 공유하기를 눌러 확인하세요!
               </div>
               <div class="btnBox">
-                  <div id="save" class="circleBtn" style="color:#accabe;border-radius:4px;min-width:70px;">
-                    공유하기
-                  </div>
+                  <button id="save" class="circleBtn" style="color:#accabe;border-radius:4px;min-width:70px;">
+                      저장하기
+                  </button>
               </div>
               
           </div>
-         
+        
 
-            <!-- <button id="">저장하기</button> -->
+            <!--  -->
 
 
             <div id='test'></div>

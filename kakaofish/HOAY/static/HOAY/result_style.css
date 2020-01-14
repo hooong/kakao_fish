@@ -48,7 +48,7 @@ h3 {
     font-size:1.5em;
    } 
 .tierImg{
-    width:100px;
+   height:40px;
 }
 .blurEffect {
     filter: blur(5px);
