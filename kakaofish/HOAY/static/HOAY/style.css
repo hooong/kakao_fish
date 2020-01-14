@@ -53,7 +53,9 @@ body{
 }
 #id_faceImg{
 	display: none;
+	
 }
+#id_faceImg:cursor
 .smt{
     font-family: DOSMyungjo;
     font-size:14pt;
