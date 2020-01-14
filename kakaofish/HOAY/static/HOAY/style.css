@@ -5,12 +5,18 @@ body{
 	/* 분홍 */
 	background-color:#C2B28F;
 }
-#logo{
+.logo{
 	font-family: DOSMyungjo;
 	color : #f7e600;
 	text-shadow: 5px 3px black;
 	font-size:40pt;
 	margin : 10px;
+}
+.subTitle{
+	font-family: DOSMyungjo;
+	color : rgb(111, 49, 30);
+	margin : 10px;
+	
 }
 .flexBox{
 	margin: 10px 0;
