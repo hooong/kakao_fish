@@ -52,7 +52,7 @@ def result(request, id):
 
     context = {'gender': gender, 'age': age, 
                 'young_or_older': young_or_older, 'age_dis': abs(diff),
-                'tier': tier, 'percent': percent}
+                'tier': tier, 'percent': percent, 'id':id}
     return render(request, "result.html", context)
 
 def error(request):
