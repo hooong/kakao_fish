@@ -31,7 +31,7 @@
   <div class="flexBox">
     <div class="retroCon" id="retrocon">
       <div class="retroElem">
-        <h3 id="myresult">
+        <div id="myresult">
           당신은 {{age}}살 {{gender}}로 보여요.<br><br>
           {% if young_or_older == 'younger' %}
           WOW 실제나이보다 {{age_dis}}살 어려 보이네요.<br><br>
@@ -55,7 +55,7 @@
           <img class="tierImg blurEffect" src="{% static 'HOAY/6.png' %}">
           {%endif%}
           <div style="float:right; font-size:12pt;">http://hoopa.fun</div>
-        </h3>
+        </div>
 
 
       </div>
