@@ -16,6 +16,12 @@
   <!-- <script src="https://cdn.rawgit.com/eligrey/FileSaver.js/5ed507ef8aa53d8ecfea96d96bc7214cd2476fd2/FileSaver.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.js"></script> -->
   <script src="http://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+
+  <meta property="og:url"           content="http://hoopa.fun/hoay" />
+  <meta property="og:type"          content="website" />
+  <meta property="og:title"         content="당신의 동안지수는?" />
+  <meta id="fb_description" property="og:description" content="" />
+  <meta id="fb_img" property="og:image" content="" />
 </head>
 
 <body>
@@ -73,7 +79,8 @@
 
   </div>
 
-  <div class="fb-share-button" data-href="http://hoopa.fun/hoay" data-layout="button" data-size="small">
+  <!-- facebook share btn -->
+  <div id="fbs" class="fb-share-button" data-href="http://hoopa.fun/hoay" data-layout="button" data-size="small">
     <a target="_blank"
       href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fhoopa.fun%2Fhoay&amp;src=sdkpreparse"
       class="fb-xfbml-parse-ignore">공유하기 </a>
@@ -88,6 +95,7 @@
   <script>
 
     $(function () {
+      // kakao
       $("#save").click(function () {
         html2canvas($('#retrocon').get(0)).then(function (canvas) {
 
@@ -101,6 +109,30 @@
             success: function (result) {
               var filename = result['filename'];
               sendLinkKakao(filename);
+            },
+            error: function (e) { alert("에러발생"); }
+          });
+
+        });
+      });
+
+      // facebook
+      $("#fbs").click(function () {
+        html2canvas($('#retrocon').get(0)).then(function (canvas) {
+
+          var data = canvas.toDataURL();
+          console.log(data)
+
+          $.ajax({
+            type: 'POST',
+            url: 'http://hoopa.fun/hoay/saveImage/',
+            data: { data: data },
+            success: function (result) {
+              var filename = result['filename'];
+              var url = 'http://hoopa.fun/static/resultImg/' + filename
+              // head에 og추가
+              $('#fb_description').attr('content','나는 상위 {{percent}}%의 {{tier}}입니다.')
+              $('#fb_img').attr('content',url)
             },
             error: function (e) { alert("에러발생"); }
           });
