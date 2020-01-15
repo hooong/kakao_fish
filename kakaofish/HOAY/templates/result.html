@@ -96,25 +96,7 @@
     $(function () {
       kakao
       $("#save").click(function () {
-        html2canvas($('#retrocon').get(0)).then(function (canvas) {
-
-          var data = new Object();
-
-          data.num = '{{num}}';
-          data.image = canvas.toDataURL();
-
-          $.ajax({
-            type: 'POST',
-            url: 'http://hoopa.fun/hoay/saveImage/',
-            data: { data: data, number: num},
-            success: function (result) {
-              var filename = result['filename'];
-              sendLinkKakao(filename);
-            },
-            error: function (e) { alert("에러발생"); }
-          });
-
-        });
+          sendLinkKakao('{{num}}');
       });
       
       // facebook
@@ -151,13 +133,13 @@
   <script>
 
     Kakao.init('4225e55822643a967aae27240473a7e6');
-    function sendLinkKakao(filename) {
+    function sendLinkKakao(num) {
       Kakao.Link.sendDefault({
         objectType: 'feed',
         content: {
           title: '나의 동안지수는?',
           description: '나는 상위 {{percent}}%의 {{tier}}입니다. ',
-          imageUrl: 'http://hoopa.fun/static/resultImg/' + filename,
+          imageUrl: 'http://hoopa.fun/static/resultImg/image' + num + '.png',
           link: {
             mobileWebUrl: 'http://hoopa.fun/hoay',
             webUrl: 'http://hoopa.fun/hoay'
