@@ -94,14 +94,14 @@
   <script>
 
     $(function () {
-      // kakao
+      kakao
       $("#save").click(function () {
         html2canvas($('#retrocon').get(0)).then(function (canvas) {
 
-          var data = canvas.toDataURL();
-          console.log(data)
+          var data = new Object();
 
-          var num = '{{num}}'
+          data.num = '{{num}}';
+          data.image = canvas.toDataURL();
 
           $.ajax({
             type: 'POST',
@@ -120,14 +120,16 @@
       // facebook
       (function toCanvas() {
         html2canvas($('#retrocon').get(0)).then(function (canvas) {
+          var data = new Object();
 
-          var data = canvas.toDataURL();
+          data.num = '{{num}}';
+          data.image = canvas.toDataURL();
           console.log(data)
 
           $.ajax({
             type: 'POST',
             url: '/hoay/saveImage/',
-            data: { data: data, number:num},
+            data: { data: data},
             success: function (result) {
               var filename = result['filename'];
               var imgurl = 'http://hoopa.fun/static/resultImg/' + filename;

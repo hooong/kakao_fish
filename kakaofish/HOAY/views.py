@@ -142,16 +142,16 @@ def tierSystem(diff):
 # canvas 이미지 저장
 @csrf_exempt
 def canvasToImage(request):
-	data = request.POST.__getitem__('data')
-	data = data[22:]
-	number = request.POST.__getitem__('number')
+    number = request.POST['data[num]']
+    data = request.POST['data[image]']
+    data = data[22:]
     
-	path = str(os.path.join(settings.STATIC_ROOT, 'resultImg/'))
-	filename = 'image' + str(number) + '.png'
+    path = str(os.path.join(settings.STATIC_ROOT, 'resultImg/'))
+    filename = 'image' + str(number) + '.png'
 
-	image = open(path+filename, "wb")
-	image.write(base64.b64decode(data))
-	image.close()
+    image = open(path+filename, "wb")
+    image.write(base64.b64decode(data))
+    image.close()
 
-	answer = {'filename': filename}
-	return JsonResponse(answer)
+    answer = {'filename': filename}
+    return JsonResponse(answer)
