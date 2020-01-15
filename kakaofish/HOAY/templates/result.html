@@ -83,7 +83,8 @@
     src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v5.0&appId=2048118508819333&autoLogAppEvents=1"></script>
 
   <!-- fb share button code -->
-  <div class="fb-share-button" 
+  <div id="fbbtn"
+    class="fb-share-button" 
     data-href="http://hoopa.fun/hoay" 
     data-layout="button">
     공유하기
@@ -126,11 +127,12 @@
             data: { data: data },
             success: function (result) {
               var filename = result['filename'];
-              var url = 'http://hoopa.fun/static/resultImg/' + filename
+              var url = 'http://hoopa.fun/static/resultImg/' + filename;
 
               // head에 og추가
-              $('#fb_description').attr('content','나는 상위 {{percent}}%의 {{tier}}입니다.')
-              $('#fb_img').attr('content',url)
+              $('#fb_description').attr('content','나는 상위 {{percent}}%의 {{tier}}입니다.');
+              $('#fb_img').attr('content',url);
+              $('#fbbtn').attr('data-href',window.location.href);
             },
             error: function (e) { alert("에러발생"); }
           });
