@@ -94,7 +94,7 @@
   <script>
 
     $(function () {
-      kakao
+      //kakao
       $("#save").click(function () {
           sendLinkKakao('{{num}}');
       });
@@ -117,11 +117,6 @@
               var imgurl = 'http://hoopa.fun/static/resultImg/' + filename;
               var url = window.location.href;
 
-              // head에 og추가
-              $('meta[property=og\\:url]').attr('content', url);
-              $('meta[property=og\\:image]').attr('content', imgurl);
-              $('meta[property=og\\:description]').attr('content', "나는 상위 {{percent}}%의 {{tier}}입니다.");
-              $('#fbbtn').attr('data-href',window.location.href + '?fbrefresh=CAN_BE_ANYTHING');
             },
             error: function (e) { alert("에러발생"); }
           });
