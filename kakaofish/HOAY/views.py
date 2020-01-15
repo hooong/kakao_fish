@@ -26,34 +26,37 @@ def hoaymain(request):
 
 # 결과보여주는 화면
 def result(request, id):
-    pre = Predict_age.objects.get(id=id)
-    gender = pre.gender
-    realage = pre.realAge
-    age = pre.predictAge
-    diff = pre.diff
-
-    if gender == 'm':
-        gender = '남자'
-    elif gender == 'f':
-        gender = '여자'
+    if 'fbclid' in request.GET:
+        return redirect('hoaymain')
     else:
-        gender = '자웅동체'
-    
-    # 동안 or 노안
-    if diff > 0:
-        young_or_older = 'older'
-    elif diff < 0:
-        young_or_older = 'younger'
-    else:
-        young_or_older = 'same'
+        pre = Predict_age.objects.get(id=id)
+        gender = pre.gender
+        realage = pre.realAge
+        age = pre.predictAge
+        diff = pre.diff
 
-    # 순위 시스템
-    tier, percent = tierSystem(diff)
+        if gender == 'm':
+            gender = '남자'
+        elif gender == 'f':
+            gender = '여자'
+        else:
+            gender = '자웅동체'
+        
+        # 동안 or 노안
+        if diff > 0:
+            young_or_older = 'older'
+        elif diff < 0:
+            young_or_older = 'younger'
+        else:
+            young_or_older = 'same'
 
-    context = {'gender': gender, 'age': age, 
-                'young_or_older': young_or_older, 'age_dis': abs(diff),
-                'tier': tier, 'percent': percent, 'id':id}
-    return render(request, "result.html", context)
+        # 순위 시스템
+        tier, percent = tierSystem(diff)
+
+        context = {'gender': gender, 'age': age, 
+                    'young_or_older': young_or_older, 'age_dis': abs(diff),
+                    'tier': tier, 'percent': percent, 'id':id}
+        return render(request, "result.html", context)
 
 def error(request):
     return render(request, 'error.html')
