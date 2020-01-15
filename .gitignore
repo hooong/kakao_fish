@@ -9,3 +9,5 @@ media
 .config_secret/
 .config/
 .static_root/
+settings_common.json
+settings.py
