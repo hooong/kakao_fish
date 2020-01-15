@@ -29,7 +29,7 @@ body{
 .retroCon:before {
     content: "";
     display: block;
-    padding-top: 100%; /* 1:1 비율 */
+    padding-top: 50%; /* 1:1 비율 */
 }
 .retroElem{
     display:flex;
