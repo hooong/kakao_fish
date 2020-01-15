@@ -1,145 +1,142 @@
 {% load static %}
 <html>
-    <head>
-        <script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
-        <script type="text/javascript">
-          if(!wcs_add) var wcs_add = {};
-          wcs_add["wa"] = "30ce34c61e2434";
-          wcs_do();
-          </script>
-          
-        <meta name="viewport" content="width=device-width">
-        <link rel="stylesheet" href="{% static 'HOAY/result_style.css' %}">
-        <script src="http://developers.kakao.com/sdk/js/kakao.min.js"></script>
-        <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
-        <!-- <script src="https://cdn.rawgit.com/eligrey/FileSaver.js/5ed507ef8aa53d8ecfea96d96bc7214cd2476fd2/FileSaver.min.js"></script>
+
+<head>
+  <script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
+  <script type="text/javascript">
+    if (!wcs_add) var wcs_add = {};
+    wcs_add["wa"] = "30ce34c61e2434";
+    wcs_do();
+  </script>
+
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="{% static 'HOAY/result_style.css' %}">
+  <script src="http://developers.kakao.com/sdk/js/kakao.min.js"></script>
+  <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+  <!-- <script src="https://cdn.rawgit.com/eligrey/FileSaver.js/5ed507ef8aa53d8ecfea96d96bc7214cd2476fd2/FileSaver.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.js"></script> -->
-        <script src="http://html2canvas.hertzen.com/dist/html2canvas.js"></script>
-    </head>
-    <body>
-        <style>
-       
-        </style>
-        
-            <p id="logo"> hoopa </p>
-            <div class="flexBox">
-                <div class="retroCon" id="retrocon">
-                    <div class="retroElem">
-                        <h3 id="myresult">
-                                당신은 {{age}}살 {{gender}}로 보여요.<br><br>
-                            {% if young_or_older == 'younger' %}
-                                WOW 실제나이보다 {{age_dis}}살 어려 보이네요.<br><br>
-                            {% elif young_or_older == 'older' %}
-                                당신은 실제나이보다 {{age_dis}}살 나이들어 보이네요ㅋㅋㅋ<br><br>
-                            {% else %}
-                                실제나이랑 똑같이 보여요.<br><br>
-                            {% endif %}
-                            당신의 동안지수는 상위 <b class="blurEffect">{{percent}}% </b>, <b class="blurEffect">{{tier}}</b> 티어 입니다.<br>
-                            {% if tier == 'Iron' %}
-                            <img class="tierImg blurEffect" src="{% static 'HOAY/1.png' %}">
-                            {% elif tier == 'Bronze' %}
-                            <img class="tierImg blurEffect" src="{% static 'HOAY/2.png' %}">
-                            {% elif tier == 'Silver' %}
-                            <img class="tierImg blurEffect" src="{% static 'HOAY/3.png' %}">
-                            {% elif tier == 'Gold' %}
-                            <img class="tierImg blurEffect" src="{% static 'HOAY/4.png' %}">
-                            {% elif tier == 'Platinum' %}
-                            <img class="tierImg blurEffect" src="{% static 'HOAY/5.png' %}">
-                            {%else%}
-                            <img class="tierImg blurEffect" src="{% static 'HOAY/6.png' %}">
-                            {%endif%}
-                            <div style="float:right; font-size:12pt;">http://hoopa.fun</div>
-                        </h3>
-                        
+  <script src="http://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+</head>
 
-                    </div>
-                </div>
-            </div>
-<style>
- 
-          
-          </style>
-           <div class="floatingBar">
-              <div class="textNotice">
-                가려진 부분이 궁금하다면 공유하기를 눌러 확인하세요!
-              </div>
-              <div class="btnBox">
-                  <button id="save" class="circleBtn" style="color:#accabe;border-radius:4px;min-width:70px;">
-                      공유하기
-                  </button>
-              </div>
-              
-          </div>
-        
+<body>
+  <style>
 
-            <!--  -->
+  </style>
+
+  <p id="logo"> hoopa </p>
+  <div class="flexBox">
+    <div class="retroCon" id="retrocon">
+      <div class="retroElem">
+        <h3 id="myresult">
+          당신은 {{age}}살 {{gender}}로 보여요.<br><br>
+          {% if young_or_older == 'younger' %}
+          WOW 실제나이보다 {{age_dis}}살 어려 보이네요.<br><br>
+          {% elif young_or_older == 'older' %}
+          당신은 실제나이보다 {{age_dis}}살 나이들어 보이네요ㅋㅋㅋ<br><br>
+          {% else %}
+          실제나이랑 똑같이 보여요.<br><br>
+          {% endif %}
+          당신의 동안지수는 상위 <b class="blurEffect">{{percent}}% </b>, <b class="blurEffect">{{tier}}</b> 티어 입니다.<br>
+          {% if tier == 'Iron' %}
+          <img class="tierImg blurEffect" src="{% static 'HOAY/1.png' %}">
+          {% elif tier == 'Bronze' %}
+          <img class="tierImg blurEffect" src="{% static 'HOAY/2.png' %}">
+          {% elif tier == 'Silver' %}
+          <img class="tierImg blurEffect" src="{% static 'HOAY/3.png' %}">
+          {% elif tier == 'Gold' %}
+          <img class="tierImg blurEffect" src="{% static 'HOAY/4.png' %}">
+          {% elif tier == 'Platinum' %}
+          <img class="tierImg blurEffect" src="{% static 'HOAY/5.png' %}">
+          {%else%}
+          <img class="tierImg blurEffect" src="{% static 'HOAY/6.png' %}">
+          {%endif%}
+          <div style="float:right; font-size:12pt;">http://hoopa.fun</div>
+        </h3>
 
 
-            <div id='test'></div>
-            <!-- <button type="button" class="btnScreenShot" id="btnScreenShot">스크린샷</button>
-            <div id="img-out"></div> -->
-            <script>
-//             var $btn = document.getElementById('btnScreenShot');
-// $btn.addEventListener('mousedown', onScreenShotClick);
+      </div>
+    </div>
+  </div>
+  <style>
 
 
-// function onScreenShotClick(ev){ //스크린샷 기능
-// alert(canvas.toDataURL());
-//   html2canvas(document.querySelector(".retroCon")).then(canvas => {
-//     document.getElementById('img-out').appendChild(canvas)
-//   });
-// }
+  </style>
+  <div class="floatingBar">
+    <div class="textNotice">
+      가려진 부분이 궁금하다면 공유하기를 눌러 확인하세요!
+    </div>
+    <div class="btnBox">
+      <button id="save" class="circleBtn" style="color:#accabe;border-radius:4px;min-width:70px;">
+        공유하기
+      </button>
+    </div>
 
-                $(function(){
-                  $("#save").click(function() { 
-                    html2canvas($('#retrocon').get(0)).then( function (canvas) {
-                      
-                      var data = canvas.toDataURL();
-                      console.log(data)
+  </div>
 
-                      $.ajax({
-                        type: 'POST',
-                        url: 'http://hoopa.fun/hoay/saveImage/',
-                        data: {data:data},
-                        success: function(result) {
-                          var filename = result['filename'];
-                          sendLinkKakao(filename);
-                          },
-                        error: function(e) { alert("에러발생");}
-                      });
+  <div class="fb-share-button" data-href="http://hoopa.fun/hoay" data-layout="button" data-size="small">
+    <a target="_blank"
+      href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fhoopa.fun%2Fhoay&amp;src=sdkpreparse"
+      class="fb-xfbml-parse-ignore">공유하기 </a>
+  </div>
 
-                    });
-                  });
-                });
-                
-              </script>
-              <script>
-                  
-                Kakao.init('4225e55822643a967aae27240473a7e6');
-                function sendLinkKakao(filename){
-                    Kakao.Link.sendDefault({
-                      objectType: 'feed',
-                      content: {
-                        title: '나의 동안지수는?',
-                        description: '나는 상위 {{percent}}%의 {{tier}}입니다. ',
-                        imageUrl: 'http://hoopa.fun/static/resultImg/' + filename,
-                        link: {
-                          mobileWebUrl: 'http://hoopa.fun/hoay',
-                          webUrl: 'http://hoopa.fun/hoay'
-                        }
-                      },
-                      buttons: [       
-                        {
-                          title: '테스트하기',
-                          link: {
-                            mobileWebUrl: 'http://hoopa.fun/hoay',
-                            webUrl: 'http://hoopa.fun/hoay'
-                          }
-                        }
-                      ]
-                    }); 
-                }
-                </script>
-    </body>
-       
+  <!-- facebook JS SDK -->
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous"
+    src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v5.0&appId=2048118508819333&autoLogAppEvents=1"></script>
+
+
+  <script>
+
+    $(function () {
+      $("#save").click(function () {
+        html2canvas($('#retrocon').get(0)).then(function (canvas) {
+
+          var data = canvas.toDataURL();
+          console.log(data)
+
+          $.ajax({
+            type: 'POST',
+            url: 'http://hoopa.fun/hoay/saveImage/',
+            data: { data: data },
+            success: function (result) {
+              var filename = result['filename'];
+              sendLinkKakao(filename);
+            },
+            error: function (e) { alert("에러발생"); }
+          });
+
+        });
+      });
+    });
+
+  </script>
+  <script>
+
+    Kakao.init('4225e55822643a967aae27240473a7e6');
+    function sendLinkKakao(filename) {
+      Kakao.Link.sendDefault({
+        objectType: 'feed',
+        content: {
+          title: '나의 동안지수는?',
+          description: '나는 상위 {{percent}}%의 {{tier}}입니다. ',
+          imageUrl: 'http://hoopa.fun/static/resultImg/' + filename,
+          link: {
+            mobileWebUrl: 'http://hoopa.fun/hoay',
+            webUrl: 'http://hoopa.fun/hoay'
+          }
+        },
+        buttons: [
+          {
+            title: '테스트하기',
+            link: {
+              mobileWebUrl: 'http://hoopa.fun/hoay',
+              webUrl: 'http://hoopa.fun/hoay'
+            }
+          }
+        ]
+      });
+    }
+  </script>
+</body>
+
 </html>
