@@ -20,7 +20,7 @@
   <meta property="og:type"          content="website" />
   <meta property="og:title"         content="당신의 동안지수는?" />
   <meta property="og:description" content="당신도 바로 지금 확인해보세요!" />
-  <meta property="og:image" content="'http://hoopa.fun/static/resultImg/image{{num}}.png" />
+  <meta property="og:image" content="'http://hoopa.fun/static/resultImg/image{{id}}.png" />
 </head>
 
 <body>
@@ -96,7 +96,7 @@
     $(function () {
       //kakao
       $("#save").click(function () {
-          sendLinkKakao('{{num}}');
+          sendLinkKakao('{{id}}');
       });
       
       // facebook
@@ -104,7 +104,7 @@
         html2canvas($('#retrocon').get(0)).then(function (canvas) {
           var data = new Object();
 
-          data.num = '{{num}}';
+          data.num = '{{id}}';
           data.image = canvas.toDataURL();
           console.log(data)
 

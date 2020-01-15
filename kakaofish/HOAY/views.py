@@ -50,11 +50,9 @@ def result(request, id):
     # 순위 시스템
     tier, percent = tierSystem(diff)
 
-    number = random.randrange(1,10000)
-
     context = {'gender': gender, 'age': age, 
                 'young_or_older': young_or_older, 'age_dis': abs(diff),
-                'tier': tier, 'percent': percent, 'id':id, 'num':number}
+                'tier': tier, 'percent': percent, 'id':id}
     return render(request, "result.html", context)
 
 def error(request):
