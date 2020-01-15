@@ -23,7 +23,7 @@ import xmas.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('bburigi/', bburigi.views.bburigi, name='bburigi_index'),
-    path('', xmas.views.xmas, name='index'),
+    path('', include('HOAY.urls')),
     path('kakiopay/', bburigi.views.kakiopay, name='kakiopay'),
     path('xmas/', xmas.views.xmas, name='xmas'),
     path('hoay/', include('HOAY.urls'))
