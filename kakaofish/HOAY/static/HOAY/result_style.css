@@ -28,6 +28,8 @@ body{
     min-height:400px;
 }
 .retroElem{
+    display:flex;
+    align-items: center;
     border-radius: 7px;
     width:90%;
     min-height:100px;
@@ -37,7 +39,9 @@ body{
     color:white;
     font-family: 'Press Start 2P', cursive;
 }
-h3 {
+
+#myresult {
+    font-size:15pt;
     font-family: DungGeunMo;
     /* font-family: 'Press Start 2P', cursive; */
     margin : 0 auto 0 auto;
@@ -46,7 +50,7 @@ h3 {
     text-shadow: 3px 3px 0px #2038ec;
     color:#fff;
     font-weight:400;
-    font-size:1.5em;
+   
    } 
 .tierImg{
    height:40px;
