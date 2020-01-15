@@ -128,13 +128,13 @@
             success: function (result) {
               var filename = result['filename'];
               var imgurl = 'http://hoopa.fun/static/resultImg/' + filename;
+              var url = window.location.href;
 
               // head에 og추가
-              $('meta[name=og\\:url]').attr('content', newVideoUrl);
-              $('meta[name=og\\:image]').attr('content', newVideoUrl);
-              $('#fb_description').attr('content','나는 상위 {{percent}}%의 {{tier}}입니다.');
-              $('#fb_img').attr('content',url);
-              $('#fbbtn').attr('data-href',window.location.href+'?fbrefresh=CAN_BE_ANYTHING');
+              $('meta[property=og\\:url]').attr('content', url);
+              $('meta[property=og\\:image]').attr('content', imgurl);
+              $('meta[property=og\\:description]').attr('content', "나는 상위 {{percent}}%의 {{tier}}입니다.");
+              $('#fbbtn').attr('data-href',window.location.href + '?fbrefresh=CAN_BE_ANYTHING');
             },
             error: function (e) { alert("에러발생"); }
           });
