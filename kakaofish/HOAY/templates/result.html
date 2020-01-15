@@ -76,6 +76,7 @@
                     html2canvas($('#retrocon').get(0)).then( function (canvas) {
                       
                       var data = canvas.toDataURL();
+                      console.log(data)
 
                       $.ajax({
                         type: 'POST',
