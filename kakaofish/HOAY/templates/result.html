@@ -13,8 +13,6 @@
   <link rel="stylesheet" href="{% static 'HOAY/result_style.css' %}">
   <script src="http://developers.kakao.com/sdk/js/kakao.min.js"></script>
   <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
-  <!-- <script src="https://cdn.rawgit.com/eligrey/FileSaver.js/5ed507ef8aa53d8ecfea96d96bc7214cd2476fd2/FileSaver.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.js"></script> -->
   <script src="http://html2canvas.hertzen.com/dist/html2canvas.js"></script>
 
   <meta property="og:url"           content="http://hoopa.fun/hoay" />
@@ -79,18 +77,17 @@
 
   </div>
 
-  <!-- facebook share btn -->
-  <div id="fbs" class="fb-share-button" data-href="http://hoopa.fun/hoay" data-layout="button" data-size="small">
-    <a target="_blank"
-      href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fhoopa.fun%2Fhoay&amp;src=sdkpreparse"
-      class="fb-xfbml-parse-ignore">공유하기 </a>
-  </div>
-
   <!-- facebook JS SDK -->
   <div id="fb-root"></div>
   <script async defer crossorigin="anonymous"
     src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v5.0&appId=2048118508819333&autoLogAppEvents=1"></script>
 
+  <!-- fb share button code -->
+  <div class="fb-share-button" 
+    data-href="http://hoopa.fun/hoay" 
+    data-layout="button">
+    공유하기
+  </div>
 
   <script>
 
@@ -115,9 +112,9 @@
 
         });
       });
-
+      
       // facebook
-      $("#fbs").click(function () {
+      (function toCanvas() {
         html2canvas($('#retrocon').get(0)).then(function (canvas) {
 
           var data = canvas.toDataURL();
@@ -125,20 +122,20 @@
 
           $.ajax({
             type: 'POST',
-            url: 'http://hoopa.fun/hoay/saveImage/',
+            url: '/hoay/saveImage/',
             data: { data: data },
             success: function (result) {
               var filename = result['filename'];
               var url = 'http://hoopa.fun/static/resultImg/' + filename
+
               // head에 og추가
               $('#fb_description').attr('content','나는 상위 {{percent}}%의 {{tier}}입니다.')
               $('#fb_img').attr('content',url)
             },
             error: function (e) { alert("에러발생"); }
           });
-
         });
-      });
+      }());
     });
 
   </script>
