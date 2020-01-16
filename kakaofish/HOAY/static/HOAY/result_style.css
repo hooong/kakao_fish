@@ -23,7 +23,7 @@ body{
     display:flex;
     justify-content: center;
     background-color: black;
-    width:90%;
+    
     max-width:400px;
 }
 .retroCon:before {

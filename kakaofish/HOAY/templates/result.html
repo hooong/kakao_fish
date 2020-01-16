@@ -126,15 +126,14 @@
   </script>
   <script>
 
-    Kakao.init('4225e55822643a967aae27240473a7e6');
+    Kakao.init('736b60b28d901c91ec8d68d2219bea21');
     function sendLinkKakao(num) {
       Kakao.Link.sendDefault({
         objectType: 'feed',
         content: {
           title: '나의 동안지수는?',
           description: '나는 상위 {{percent}}%의 {{tier}}입니다. ',
-          // imageUrl: 'http://hoopa.fun/static/resultImg/image' + num + '.png',
-          imageUrl:'https://lh3.googleusercontent.com/8MEwjN3qCDra74gZR5Xpn-3Q4b1uCDJX5iips-XM5meQ5mTdRap_LnwngNLEVEY7X06QDCj1-pq2tmQZa3xbBe-A98LnVCou0Q=s640-l65',
+          imageUrl: 'http://hoopa.fun/static/resultImg/image' + num + '.png',
           link: {
             mobileWebUrl: 'http://hoopa.fun/hoay',
             webUrl: 'http://hoopa.fun/hoay'
