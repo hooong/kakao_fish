@@ -24,7 +24,6 @@ body{
     justify-content: center;
     background-color: black;
     
-    max-width:400px;
 }
 .retroCon:before {
     content: "";
@@ -45,7 +44,7 @@ body{
 }
 
 #myresult {
-    font-size:15pt;
+    font-size:3vw;
     font-family: DungGeunMo;
     margin : 0 auto 0 auto;
     text-align:left;
