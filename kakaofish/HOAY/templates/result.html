@@ -14,9 +14,9 @@
   <script src="http://developers.kakao.com/sdk/js/kakao.min.js"></script>
   <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
   <script src="http://html2canvas.hertzen.com/dist/html2canvas.js"></script>
-  
+
   <meta property="og:image:width" content="1200" />
-	<meta property="og:image:height" content="627" />
+	<meta property="og:image:height" content="630" />
   <meta property="og:url"           content="http://hoopa.fun/hoay/result/{{id}}" />
   <meta property="og:type"          content="website" />
   <meta property="og:title"         content="당신의 동안지수는?" />
@@ -31,7 +31,7 @@
 
   <a style="text-decoration: none;"href="/"><p id="logo"> hoopa </p></a>
   <div class="flexBox">
-    <div class="retroCon" id="retrocon" style="display:none;">
+    <div class="retroCon" id="retrocon">
       <div class="retroElem">
         <div id="myresult">
           당신은 {{age}}살 {{gender}}로 보여요.<br><br>
@@ -136,8 +136,8 @@
           title: '나의 동안지수는?',
           description: '나는 상위 {{percent}}%의 {{tier}}입니다. ',
           imageUrl: 'http://hoopa.fun/static/resultImg/image' + num + '.png',
-          imageWidth : 700,
-          imageHeight : 350,
+          imageWidth : 1200,
+          imageHeight : 630,
           link: {
             mobileWebUrl: 'http://hoopa.fun/hoay',
             webUrl: 'http://hoopa.fun/hoay'
