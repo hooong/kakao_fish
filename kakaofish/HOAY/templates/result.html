@@ -71,27 +71,37 @@
     <div class="textNotice">
       가려진 부분이 궁금하다면 공유하기를 눌러 확인하세요!
     </div>
-    <div class="btnBox">
+    <!-- <div class="btnBox">
       <button id="save" type='button' class="circleBtn" style="color:#accabe;border-radius:4px;min-width:70px;">
         공유하기
       </button>
-    </div>
+    </div> -->
 
   </div>
-
-  <!-- facebook JS SDK -->
+  <button id="save" type='button' class="fb-share-button" >
+    <img width="18px"src="{% static 'HOAY/kakaoBtn.png' %}">
+    <span>공유하기</span>
+    </button>
+  </div>
+  <!-- facebook JS SDK
   <div id="fb-root"></div>
   <script async defer crossorigin="anonymous"
-    src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v5.0&appId=834759666971225&autoLogAppEvents=1"></script>
+    src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v5.0&appId=834759666971225&autoLogAppEvents=1"></script> -->
 
   <!-- fb share button code -->
-  <div id="fbbtn"
+  <!-- <div id="fbbtn"
     class="fb-share-button" 
     data-href="http://hoopa.fun/hoay/result/{{id}}" 
-    data-layout="button">
-    공유하기
-  </div>
-
+    data-layout="button" data-size="large">
+    
+  </div> -->
+  <!-- -->
+<button id="fb-share-button" class="fb-share-button">
+    <svg viewBox="0 0 12 12" preserveAspectRatio="xMidYMid meet">
+        <path class="svg-icon-path" d="M9.1,0.1V2H8C7.6,2,7.3,2.1,7.1,2.3C7,2.4,6.9,2.7,6.9,3v1.4H9L8.8,6.5H6.9V12H4.7V6.5H2.9V4.4h1.8V2.8 c0-0.9,0.3-1.6,0.7-2.1C6,0.2,6.6,0,7.5,0C8.2,0,8.7,0,9.1,0.1z"></path>
+    </svg>
+    <span>공유하기</span>
+  </button>
   <script>
 
     $(function () {
@@ -119,7 +129,7 @@
               var url = window.location.href;
 
             },
-            error: function (e) { alert("에러발생"); }
+            // error: function (e) { alert("에러발생"); }
           });
         });
       }());
@@ -163,6 +173,19 @@
     //     'imageUrl': 'http://hoopa.fun/static/resultImg/image' + num + '.png',
     //   }
     // });
+
+    var fbButton = document.getElementById('fb-share-button');
+  var url = "http://hoopa.fun/hoay/result/{{id}}"
+
+fbButton.addEventListener('click', function() {
+    window.open('https://www.facebook.com/sharer/sharer.php?u=' + url,
+        'facebook-share-dialog',
+        'width=800,height=600'
+    );
+    return false;
+});
+
+
   </script>
 </body>
 
