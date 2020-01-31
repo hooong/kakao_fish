@@ -8,6 +8,9 @@ from django.http import JsonResponse
 import requests, os, json, random, base64
 
 # 사진이랑 나이 입력화면
+def index(request):
+    return render(request, "index.html")
+    
 def hoaymain(request):
     if request.method == 'POST':
         faceimgform = FaceImgForm(request.POST, request.FILES)

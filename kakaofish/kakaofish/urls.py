@@ -19,11 +19,12 @@ from django.conf.urls.static import static
 from django.conf import settings
 import bburigi.views
 import xmas.views
+import HOAY.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('bburigi/', bburigi.views.bburigi, name='bburigi_index'),
-    path('', include('HOAY.urls')),
+    path('', HOAY.views.index,name='index'),
     path('kakiopay/', bburigi.views.kakiopay, name='kakiopay'),
     path('xmas/', xmas.views.xmas, name='xmas'),
     path('hoay/', include('HOAY.urls'))

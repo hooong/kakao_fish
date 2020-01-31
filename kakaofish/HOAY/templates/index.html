@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>신종 코로나 정보</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+	<link rel="stylesheet" href="./index.css">
+</head>
+<body>
+	<div class="flexbox">
+		<div id="main">
+			<div style="background-color:black;color:white">신종코로나 실시간 상황 전파</div>
+			<div id="navigation" class="navs">
+				<div class="navBtn" style="color:red">한국 상황<div style="position: relative;"><i></i></div></div>
+				<div class="navBtn">세계 상황<div style="position: relative;"></div></div>
+			</div><br>
+			<span style="color:red;font-family: Recipekorea;padding:10px">●LIVE</span>
+			<div class="innerFlexbox">
+
+				<div id="infected">
+					<p id="counter1"></p>
+					<span>확진자</span>
+				</div>
+				<div id="suspiciousVirusHolder">
+					<p id="counter2"></p>
+					<span>유증상자</span>
+				</div>
+					<div id="quarantine">
+					<p id="counter3"></p>
+					<span>치료</span>
+				</div>
+					<div id="death">
+						<p id="counter4"></p>
+					<span>사망</span>
+				</div>
+		</div>
+			<hr>
+
+			<div style="height:1900px;width:10px;">z</div>
+		</div>
+
+	</div>
+
+</body>
+</html>
+<script type="text/javascript">
+    var nav = document.getElementById("navigation");
+    var navbtn = document.getElementsByClassName("navBtn");
+	var navbtn2 = document.getElementsByClassName("navBtn2");
+    window.onscroll = function sticky() {
+      if(window.pageYOffset > nav.offsetTop) {
+        nav.className = "nav";
+      } else {
+        nav.className = "navs";
+      }
+    }
+    function numberCounter(target_frame, target_number){
+    	this.count =0;
+    	this.diff = 0;
+    	this.target_count=parseInt(target_number);
+    	this.target_frame=document.getElementById(target_frame);
+    	this.timer = null;
+    	this.counter();
+    };
+    numberCounter.prototype.counter = function() {
+    var self = this;
+    this.diff = this.target_count - this.count;
+     
+    if(this.diff > 0) {
+        self.count += Math.ceil(this.diff / 5);
+    }
+     
+    this.target_frame.innerHTML = this.count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+     
+    if(this.count < this.target_count) {
+        this.timer = setTimeout(function() { self.counter(); }, 20);
+    } else {
+        clearTimeout(this.timer);
+    }
+};
+
+new numberCounter("counter1", 11);
+new numberCounter("counter2", 298);
+new numberCounter("counter3", 0);
+new numberCounter("counter4", 0);
+
+  </script>
+  <style>
+  @font-face { font-family: 'Recipekorea'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/Recipekorea.woff') format('woff'); font-weight: normal; font-style: normal; }
+
+html,body{
+	background-color:#ebeef1;
+	height:100%;
+	margin:0px;
+  background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/debut_light.png");
+  }
+
+i{
+	position:absolute;
+	
+	bottom:-15px;
+	
+	display: inline-block;
+	width:60px;
+	height:0.1rem;
+	margin:auto;
+	background-color:red;
+}
+
+.innerFlexbox{
+	padding:15px;
+	display:flex;
+	justify-content:center;
+	
+}
+.flexbox{
+	display:flex;
+	justify-content:center;
+	height:100%;
+}
+#main{
+	width:800px;
+	max-width:800px;
+	background-color:white;
+	height: 100%;
+}
+.navs{
+	transition:0.2s;
+	background-color:#37383f;
+}
+#navigation{
+	color:black;
+	box-sizing: border-box;
+	transition:0.2s;
+	color:red;
+	height:50px;
+	padding:10px;
+	width:800px;
+	max-width:800px;
+	box-shadow: 0px 0px 10px grey;
+	display:flex;
+	align-items: center;
+	justify-content:space-around;
+}
+#counter1,#counter2,#counter3,#counter4{
+	/*font-family: Recipekorea;*/
+	margin:0px;
+}
+#navigation a:link{
+	color:#accabe;
+	text-decoration:none;
+}
+#infected,#suspiciousVirusHolder,#quarantine,#death {
+	margin:10px;
+	width:100px;
+	display:flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size:20pt;
+	color :#FE2E64;
+	font-weight:bold;
+}
+#quarantine{
+	color:rgb(93, 112, 146);
+}
+#infected{
+	color:rgb(247, 130, 7);
+}
+#suspiciousVirusHolder {
+color:rgb(247, 76, 49);
+}
+#death{
+	color:rgb(40, 183, 163);;
+}
+
+#infected > span,#suspiciousVirusHolder > span,#quarantine > span,#death > span{
+	font-size:12pt;
+	color:#666666;
+}
+.navBtn {
+	color:#accabe;
+}
+.navBtn::after{
+
+}
+.navBtn2 {
+	color:red;
+}
+
+a:visited{
+	color:#accabe;
+}
+.nav{
+	top:0px;
+	position: fixed;
+	background-color:#37383f;
+}
+
+@media (max-width:800px){
+	#navigation{
+	color:black;
+	box-sizing: border-box;
+	transition:0.3s;
+	color:red;
+	height:50px;
+	padding:10px;
+	width:100%;
+	max-width:800px;
+	box-shadow: 0px 0px 10px grey;
+	vertical-align: middle;
+	}
+
+	#main{
+	width:100%;
+	max-width:800px;
+	background-color:white;
+	height: 100%;
+}
+
+}
+  </style>
