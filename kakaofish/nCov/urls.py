@@ -8,4 +8,4 @@ urlpatterns = [
 ]
 
 # 크롤링 스케쥴러
-schedule()
+# schedule()
