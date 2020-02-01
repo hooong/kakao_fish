@@ -14,7 +14,6 @@
 		wcs_do();
 		</script>
 	<meta name="viewport" content="width=device-width, user-scalable=no">
-	<link rel="stylesheet" href="./index.css">
 </head>
 <body>
 
@@ -46,12 +45,23 @@
 				</div>
 		</div>
 			<hr>
+<<<<<<< HEAD:kakaofish/HOAY/templates/index.html
 			<img width="100%" src="http://www.cdc.go.kr/html/a2/namoimage/images/000016/0129_[A4%EA%B0%80%EB%A1%9C]_%EA%B5%AD%EB%AC%B8_%EC%98%88%EB%B0%A9%EC%88%98%EC%B9%99_%EB%B8%94%EB%A3%A8%ED%8F%AC%EC%8A%A4%ED%84%B0_%EA%B0%90%EC%97%BC%EB%B3%91_%EC%98%88%EB%B0%A9%EC%88%98%EC%B9%99_CS3.jpg">
 			<div style="color:#666666; text-align:center;">감염이 의심될 땐 관할 보건소 또는 1339, 지역번호 + 120</div>
 			<div style="height:1900px;width:10px;">w</div>
 			
+=======
+			{% for new in news %}
+				<br>
+				{{new.title}}
+				<br>
+				<hr>
+			{% endfor %}
+			<div style="height:1900px;width:10px;"></div>
+>>>>>>> 98029c389b24763e6c10c5ef0b9f37c5e5c5ddfe:kakaofish/nCov/templates/index.html
 		</div>
 
+		
 	</div>
 
 	</div>
