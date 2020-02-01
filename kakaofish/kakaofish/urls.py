@@ -20,13 +20,15 @@ from django.conf import settings
 import bburigi.views
 import xmas.views
 import HOAY.views
+import nCov.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('bburigi/', bburigi.views.bburigi, name='bburigi_index'),
-    path('', HOAY.views.index,name='index'),
+    path('', nCov.views.coIndex ,name='index'),
     path('kakiopay/', bburigi.views.kakiopay, name='kakiopay'),
     path('xmas/', xmas.views.xmas, name='xmas'),
-    path('hoay/', include('HOAY.urls'))
+    path('hoay/', include('HOAY.urls')),
+    path('n_corona/', include('nCov.urls'))
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
