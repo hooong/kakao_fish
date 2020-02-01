@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bburigi',
     'xmas',
-    'HOAY'
+    'HOAY',
+    'nCov'
 ]
 
 MIDDLEWARE = [
