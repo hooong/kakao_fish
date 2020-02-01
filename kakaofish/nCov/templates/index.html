@@ -6,15 +6,16 @@
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-  <script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
-  <script type="text/javascript">
-    if(!wcs_add) var wcs_add = {};
-    wcs_add["wa"] = "30ce34c61e2434";
-    wcs_do();
-    </script>
-  <meta name="viewport" content="width=device-width, user-scalable=no">
-  <link rel="stylesheet" href="./index.css">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+	<script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
+	<script type="text/javascript">
+		if(!wcs_add) var wcs_add = {};
+		wcs_add["wa"] = "30ce34c61e2434";
+		wcs_do();
+		</script>
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+
 </head>
 <body>
 
@@ -28,31 +29,43 @@
       <span style="color:red;font-family: Recipekorea;padding:10px">●LIVE</span>
       <div class="innerFlexbox">
 
-        <div id="infected">
-          <p id="counter1"></p>
-          <span>확진자</span>
-        </div>
-        <div id="suspiciousVirusHolder">
-          <p id="counter2"></p>
-          <span>유증상자</span>
-        </div>
-          <div id="quarantine">
-          <p id="counter3"></p>
-          <span>치료</span>
-        </div>
-          <div id="death">
-            <p id="counter4"></p>
-          <span>사망</span>
-        </div>
-    </div>
-      <hr>
-      <img width="100%" src="http://www.cdc.go.kr/html/a2/namoimage/images/000016/0129_[A4%EA%B0%80%EB%A1%9C]_%EA%B5%AD%EB%AC%B8_%EC%98%88%EB%B0%A9%EC%88%98%EC%B9%99_%EB%B8%94%EB%A3%A8%ED%8F%AC%EC%8A%A4%ED%84%B0_%EA%B0%90%EC%97%BC%EB%B3%91_%EC%98%88%EB%B0%A9%EC%88%98%EC%B9%99_CS3.jpg">
-      <div style="color:#666666; text-align:center;">감염이 의심될 땐 관할 보건소 또는 1339, 지역번호 + 120</div>
-      <div style="height:1900px;width:10px;">w</div>
-      
-    </div>
+				<div id="infected">
+					<p id="counter1"></p>
+					<span>확진자</span>
+				</div>
+				<div id="suspiciousVirusHolder">
+					<p id="counter2"></p>
+					<span>유증상자</span>
+				</div>
+					<div id="quarantine">
+					<p id="counter3"></p>
+					<span>치료</span>
+				</div>
+					<div id="death">
+						<p id="counter4"></p>
+					<span>사망</span>
+				</div>
+		</div>
+			<hr>
 
-  </div>
+			<img width="100%" src="http://www.cdc.go.kr/html/a2/namoimage/images/000016/0129_[A4%EA%B0%80%EB%A1%9C]_%EA%B5%AD%EB%AC%B8_%EC%98%88%EB%B0%A9%EC%88%98%EC%B9%99_%EB%B8%94%EB%A3%A8%ED%8F%AC%EC%8A%A4%ED%84%B0_%EA%B0%90%EC%97%BC%EB%B3%91_%EC%98%88%EB%B0%A9%EC%88%98%EC%B9%99_CS3.jpg">
+			<div style="color:#666666; text-align:center;">감염이 의심될 땐 관할 보건소 또는 1339, 지역번호 + 120</div>
+			<div style="height:1900px;width:10px;">w</div>
+			
+
+			{% for new in news %}
+				<br>
+				{{new.title}}
+				<br>
+				<hr>
+			{% endfor %}
+			<div style="height:1900px;width:10px;"></div>
+
+		</div>
+
+		
+	</div>
+
 
   </div>
   <div style="height:200px;"></div>
@@ -75,7 +88,7 @@
         </button>
     </div>
     </div>
-    *<!-- <div id="header">이부분이 움직인다</div> -->*
+    <!-- <div id="header">이부분이 움직인다</div> -->
 </body>
 
   
@@ -83,17 +96,17 @@
 <script>
   $(function(){
     var lastScrollTop = 0, delta = 15;
-    $(window).scroll(function(*event*){
+    $(window).scroll(function(event){
        var st = $(this).scrollTop();
        
        if(Math.abs(lastScrollTop - st) <= delta)
           return; 
 if ((st > lastScrollTop) && (lastScrollTop>0)) {
-       *// downscroll code*
+       // downscroll code*
       $("#fBar").css("bottom","-60px"); 
   
    } else {
-      *// upscroll code*
+      // upscroll code*
       $("#fBar").css("bottom","0px"); 
    }
        lastScrollTop = st;
@@ -115,16 +128,15 @@ var nav = document.getElementById("navigation");
     fBar.classList.add('slideOutDown');
     
   }
-    *// var nav = document.getElementById("navigation");*
-    *// var navbtn = document.getElementsByClassName("navBtn");*
-    *// var enters = document.getElementById("enters");*
+    // var nav = document.getElementById("navigation");
+    // var navbtn = document.getElementsByClassName("navBtn");
+    // var enters = document.getElementById("enters");
+    // window.onscroll = function(ev) {*
+    // if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+    //     alert("you're at the bottom of the page");
+    // }*
 
-    *// window.onscroll = function(ev) {*
-    *// if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {*
-    *//     alert("you're at the bottom of the page");*
-    *// }*
-
-    function numberCounter(*target_frame*, *target_number*){
+    function numberCounter(target_frame, target_number){
       this.count =0;
       this.diff = 0;
       this.target_count=parseInt(target_number);
@@ -231,7 +243,7 @@ i{
   justify-content:space-around;
 }
 #counter1,#counter2,#counter3,#counter4{
-  */*font-family: Recipekorea;*/*
+  /*font-family: Recipekorea;*/
   margin:0px;
 }
 #navigation a:link{

@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
-from selenium import webdriver
+# from selenium import webdriver
+
 import requests
 from .models import *
 
