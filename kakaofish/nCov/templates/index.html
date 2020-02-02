@@ -7,7 +7,7 @@
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   crossorigin="anonymous"></script>
-
+  	<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=fvuwqprm1x"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 	<script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
 	<script type="text/javascript">
@@ -62,7 +62,11 @@
 				<br>
 				<hr>
 			{% endfor %}
+			<!-- 맵 -->
+			<div id="map" style="width:100%;height:400px;"></div>
 			<div style="height:1900px;width:10px;"></div>
+
+			
 
 		</div>
 
@@ -156,6 +160,265 @@
 			.attr("cy", function(d) { return y_scale(d.value) })
 			.attr("r", 5)
 	});
+</script>
+
+<!-- 맵 -->
+<script>
+	var mapOptions = {
+		center: new naver.maps.LatLng(36.437471, 128.049047),
+		zoom: 2
+	};
+	
+	var map = new naver.maps.Map('map', mapOptions);
+
+	// 1번확진자
+	var polyline = new naver.maps.Polyline({
+		map: map,
+		path: [
+			new naver.maps.LatLng(37.461439, 126.447600),
+			new naver.maps.LatLng(37.478415, 126.668536)
+		],
+		clickable: true,
+		strokeColor: '#E51D1A',
+		strokeStyle: 'solid',
+		strokeOpacity: 1,
+		strokeWeight: 5
+	});
+	var circle = new naver.maps.Circle({
+		map: map,
+		center: new naver.maps.LatLng(37.461439, 126.447600),
+		radius: 4000,
+		fillColor: '#E51D1A',
+		fillOpacity: 0.3
+	});
+	var circle = new naver.maps.Circle({
+		map: map,
+		center: new naver.maps.LatLng(37.478415, 126.668536),
+		radius: 1000,
+		fillColor: '#E51D1A',
+		fillOpacity: 0.3
+	});
+
+	// 2번확진자
+	var polyline = new naver.maps.Polyline({
+		map: map,
+		path: [
+			new naver.maps.LatLng(37.559660, 126.803975),
+			new naver.maps.LatLng(37.606522, 127.015286),
+			new naver.maps.LatLng(37.567228, 127.005552)
+		],
+		clickable: true,
+		strokeColor: '#8000FF',
+		strokeStyle: 'solid',
+		strokeOpacity: 1,
+		strokeWeight: 5
+	});
+	var circle = new naver.maps.Circle({
+		map: map,
+		center: new naver.maps.LatLng(37.559660, 126.803975),
+		radius: 1000,
+		fillColor: '#8000FF',
+		fillOpacity: 0.3
+	});
+	var circle = new naver.maps.Circle({
+		map: map,
+		center: new naver.maps.LatLng(37.606522, 127.015286),
+		radius: 1000,
+		fillColor: '#8000FF',
+		fillOpacity: 0.3
+	});
+	var circle = new naver.maps.Circle({
+		map: map,
+		center: new naver.maps.LatLng(37.567228, 127.005552),
+		radius: 1000,
+		fillColor: '#8000FF',
+		fillOpacity: 0.3
+	});
+
+	// 3번확진자
+	var polyline = new naver.maps.Polyline({
+		map: map,
+		path: [
+			new naver.maps.LatLng(37.642035, 126.831015),
+			new naver.maps.LatLng(37.679255, 126.763464),
+			new naver.maps.LatLng(37.511039, 127.039706),
+		],
+		clickable: true,
+		strokeColor: '#04B45F',
+		strokeStyle: 'solid',
+		strokeOpacity: 1,
+		strokeWeight: 5
+	});
+	var circle = new naver.maps.Circle({
+		map: map,
+		center: new naver.maps.LatLng(37.679255, 126.763464),
+		radius: 1000,
+		fillColor: '#04B45F',
+		fillOpacity: 0.3
+	});
+	var circle = new naver.maps.Circle({
+		map: map,
+		center: new naver.maps.LatLng(37.511039, 127.039706),
+		radius: 2000,
+		fillColor: '#04B45F',
+		fillOpacity: 0.3
+	});
+	var circle = new naver.maps.Circle({
+		map: map,
+		center: new naver.maps.LatLng(37.642035, 126.831015),
+		radius: 1000,
+		fillColor: '#04B45F',
+		fillOpacity: 0.3
+	});
+
+	// 4번확진자
+	var polyline = new naver.maps.Polyline({
+		map: map,
+		path: [
+			new naver.maps.LatLng(37.461439, 126.447600),
+			new naver.maps.LatLng(37.027377, 127.108912),
+			new naver.maps.LatLng(37.351316, 127.123325)
+		],
+		clickable: true,
+		strokeColor: '#8A4B08',
+		strokeStyle: 'solid',
+		strokeOpacity: 1,
+		strokeWeight: 5
+	});
+	var circle = new naver.maps.Circle({
+		map: map,
+		center: new naver.maps.LatLng(37.461439, 126.447600),
+		radius: 3000,
+		fillColor: '#8A4B08',
+		fillOpacity: 0.3
+	});
+	var circle = new naver.maps.Circle({
+		map: map,
+		center: new naver.maps.LatLng(37.027377, 127.108912),
+		radius: 6500,
+		fillColor: '#8A4B08',
+		fillOpacity: 0.3
+	});
+	var circle = new naver.maps.Circle({
+		map: map,
+		center: new naver.maps.LatLng(37.351316, 127.123325),
+		radius: 1000,
+		fillColor: '#8A4B08',
+		fillOpacity: 0.3
+	});
+
+	// 5번 확진자
+	var polyline = new naver.maps.Polyline({
+		map: map,
+		path: [
+			new naver.maps.LatLng(37.461439, 126.447600),
+			new naver.maps.LatLng(37.592164, 127.009733),
+			new naver.maps.LatLng(37.563981, 127.029543),
+			new naver.maps.LatLng(37.523686, 127.046616),
+			new naver.maps.LatLng(37.589068, 127.092039),
+			new naver.maps.LatLng(37.612687, 127.098255)
+		],
+		clickable: true,
+		strokeColor: '#F781F3',
+		strokeStyle: 'solid',
+		strokeOpacity: 1,
+		strokeWeight: 5
+	});
+	var circle = new naver.maps.Circle({
+		map: map,
+		center: new naver.maps.LatLng(37.461439, 126.447600),
+		radius: 1000,
+		fillColor: '#F781F3',
+		fillOpacity: 0.3
+	});
+	var circle = new naver.maps.Circle({
+		map: map,
+		center: new naver.maps.LatLng(37.592164, 127.009733),
+		radius: 1000,
+		fillColor: '#F781F3',
+		fillOpacity: 0.3
+	});
+	var circle = new naver.maps.Circle({
+		map: map,
+		center: new naver.maps.LatLng(37.563981, 127.029543),
+		radius: 1000,
+		fillColor: '#F781F3',
+		fillOpacity: 0.3
+	});
+	var circle = new naver.maps.Circle({
+		map: map,
+		center: new naver.maps.LatLng(37.523686, 127.046616),
+		radius: 1000,
+		fillColor: '#F781F3',
+		fillOpacity: 0.3
+	});
+	var circle = new naver.maps.Circle({
+		map: map,
+		center: new naver.maps.LatLng(37.589068, 127.092039),
+		radius: 1000,
+		fillColor: '#F781F3',
+		fillOpacity: 0.3
+	});
+	var circle = new naver.maps.Circle({
+		map: map,
+		center: new naver.maps.LatLng(37.612687, 127.098255),
+		radius: 1000,
+		fillColor: '#F781F3',
+		fillOpacity: 0.3
+	});
+
+	// 6번 확진자
+	var polyline = new naver.maps.Polyline({
+		map: map,
+		path: [
+			new naver.maps.LatLng(37.527679, 127.032403),
+			new naver.maps.LatLng(37.585234, 126.998814),
+			new naver.maps.LatLng(37.578512, 126.997888),
+		],
+		clickable: true,
+		strokeColor: '#2EFEF7',
+		strokeStyle: 'solid',
+		strokeOpacity: 1,
+		strokeWeight: 5
+	});
+	var circle = new naver.maps.Circle({
+		map: map,
+		center: new naver.maps.LatLng(37.527679, 127.032403),
+		radius: 1000,
+		fillColor: '#2EFEF7',
+		fillOpacity: 0.3
+	});
+	var circle = new naver.maps.Circle({
+		map: map,
+		center: new naver.maps.LatLng(37.585234, 126.998814),
+		radius: 1000,
+		fillColor: '#2EFEF7',
+		fillOpacity: 0.3
+	});
+	var circle = new naver.maps.Circle({
+		map: map,
+		center: new naver.maps.LatLng(37.578512, 126.997888),
+		radius: 1000,
+		fillColor: '#2EFEF7',
+		fillOpacity: 0.3
+	});
+
+	// 7번 확진자
+	var polyline = new naver.maps.Polyline({
+		map: map,
+		path: [
+			new naver.maps.LatLng(37.461439, 126.447600),
+			new naver.maps.LatLng(37.585234, 126.998814),
+			new naver.maps.LatLng(37.578512, 126.997888),
+		],
+		clickable: true,
+		strokeColor: '#FAAC58',
+		strokeStyle: 'solid',
+		strokeOpacity: 1,
+		strokeWeight: 5
+	});
+
+	
 </script>
 	
 
