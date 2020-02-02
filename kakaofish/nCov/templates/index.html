@@ -71,7 +71,7 @@
 
 
   </div>
-  <div style="height:200px;"></div>
+  <!-- <div style="height:200px;"></div> -->
 
   
   <div id="fBar"class="floatingBar animated slideInUp">
@@ -97,9 +97,9 @@
 <!-- 그래프 -->
 <script src="https://d3js.org/d3.v5.min.js"></script>
 <script>
-	var gr_w = 600;
-	var gr_h = 400;
-	var margin = {top:40, right:20, bottom:50, left:50};
+	var gr_w = window.innerWidth;
+	var gr_h = 300;
+	var margin = {top:40, right:0, bottom:50, left:30};
 	
 	var x_scale = d3.scaleTime().range([0, gr_w]);
 	var y_scale = d3.scaleLinear().range([gr_h, 0]); // Y축 좌표계 변경
@@ -112,7 +112,7 @@
 	
 	var svg = d3.select("body")
 				.append("svg")
-				.attr("width", gr_w + margin.left + margin.right)
+				.attr("width", window.innerWidth-40 + margin.left + margin.right)
 				.attr("height", gr_h + margin.top + margin.bottom)
 				.append("g")
 				.attr("transform", `translate(${margin.left},${margin.top})`);
@@ -437,6 +437,7 @@ a:visited{
 
   /* 그래프css */
   .axis path, axis line {
+	
 	fill: none;
 	stroke: black;
 	shape-rendering: crispEdges;
