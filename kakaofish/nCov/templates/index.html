@@ -99,14 +99,14 @@
 <script>
 	var gr_w = 600;
 	var gr_h = 400;
-	var margin = {top:40, right:20, bottom:50, left:20};
+	var margin = {top:40, right:20, bottom:50, left:50};
 	
 	var x_scale = d3.scaleTime().range([0, gr_w]);
 	var y_scale = d3.scaleLinear().range([gr_h, 0]); // Y축 좌표계 변경
 	
 	var x_axis = d3.axisBottom(x_scale)
 					.tickFormat(function(d){
-						return (d.getMonth()+1);
+						return (d.getMonth()+1) + "월" + (d.getDate()) + "일";
 					});
 	var y_axis = d3.axisLeft(y_scale).ticks(30);
 	
