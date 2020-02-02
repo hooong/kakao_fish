@@ -52,7 +52,7 @@
 			<img width="100%" src="http://www.cdc.go.kr/html/a2/namoimage/images/000016/0129_[A4%EA%B0%80%EB%A1%9C]_%EA%B5%AD%EB%AC%B8_%EC%98%88%EB%B0%A9%EC%88%98%EC%B9%99_%EB%B8%94%EB%A3%A8%ED%8F%AC%EC%8A%A4%ED%84%B0_%EA%B0%90%EC%97%BC%EB%B3%91_%EC%98%88%EB%B0%A9%EC%88%98%EC%B9%99_CS3.jpg">
 			<div style="color:#666666; text-align:center;">감염이 의심될 땐 관할 보건소 또는 1339, 지역번호 + 120</div>
 			<div style="height:1900px;width:10px;">w</div>
-			
+			<div id="graph"></div>
 
 			{% for new in news %}
 				<br>
@@ -75,7 +75,7 @@
 
 
   </div>
-  <div style="height:200px;"></div>
+  <!-- <div style="height:200px;"></div> -->
 
   
   <div id="fBar"class="floatingBar animated slideInUp">
@@ -101,9 +101,9 @@
 <!-- 그래프 -->
 <script src="https://d3js.org/d3.v5.min.js"></script>
 <script>
-	var gr_w = 600;
-	var gr_h = 400;
-	var margin = {top:40, right:20, bottom:50, left:50};
+	var gr_w = window.innerWidth-40;
+	var gr_h = 300;
+	var margin = {top:40, right:0, bottom:50, left:30};
 	
 	var x_scale = d3.scaleTime().range([0, gr_w]);
 	var y_scale = d3.scaleLinear().range([gr_h, 0]); // Y축 좌표계 변경
@@ -114,7 +114,7 @@
 					});
 	var y_axis = d3.axisLeft(y_scale).ticks(30);
 	
-	var svg = d3.select("body")
+	var svg = d3.select("#graph")
 				.append("svg")
 				.attr("width", gr_w + margin.left + margin.right)
 				.attr("height", gr_h + margin.top + margin.bottom)
@@ -700,6 +700,7 @@ a:visited{
 
   /* 그래프css */
   .axis path, axis line {
+	
 	fill: none;
 	stroke: black;
 	shape-rendering: crispEdges;
