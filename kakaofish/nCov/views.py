@@ -29,7 +29,7 @@ def coIndex(request):
     # response_url = requests.get(request_url, headers=headers)
     # news = response_url.json()
 
-    news = News.objects.all()
+    news = News.objects.all().order_by('-id')[:10]
 
     context = {'news':news}
 
