@@ -56,7 +56,9 @@
 
 			{% for new in news %}
 				<br>
-				{{new.title}}
+				<a href="{{new.link}}">{{new.title}}</a><br>
+				{{new.description}}<br>
+				{{new.pubDate}}
 				<br>
 				<hr>
 			{% endfor %}

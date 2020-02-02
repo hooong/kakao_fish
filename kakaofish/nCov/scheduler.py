@@ -26,7 +26,8 @@ def crawling_news():
         save_new.title = new['title']
         save_new.link = new['link']
         save_new.description = new['description']
-        save_new.pubDate = new['pubDate']
+        # date 설정
+        save_new.pubDate = new['pubDate'][:22] 
         save_new.save()
     
     print("sucess news cralwing!")
