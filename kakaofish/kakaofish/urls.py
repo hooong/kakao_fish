@@ -29,6 +29,7 @@ urlpatterns = [
     path('kakiopay/', bburigi.views.kakiopay, name='kakiopay'),
     path('xmas/', xmas.views.xmas, name='xmas'),
     path('hoay/', include('HOAY.urls')),
-    path('n_corona/', include('nCov.urls'))
+    path('n_corona/', include('nCov.urls')),
+    path('lotto/', include('lotto.urls'))
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
