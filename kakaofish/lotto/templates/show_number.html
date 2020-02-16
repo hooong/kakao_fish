@@ -1,6 +1,11 @@
 <h1>추첨 결과</h1>
 <hr>
-{% for num in nums %}
-    <h2></h2>
+{% for o, num in nums %}
+    {{o}} 
+    {% for i in num %}
+        {{i}}
+    {% endfor %}
+    <br>
 {% endfor %}
 <hr>
+<button><a href="{% url 'start' %}">다시 추첨하기</a></button>
