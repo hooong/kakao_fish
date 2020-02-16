@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'bburigi',
     'xmas',
     'HOAY',
-    'nCov'
+    'nCov',
+    'lotto'
 ]
 
 MIDDLEWARE = [
