@@ -3,6 +3,9 @@
 <html>
 <head>
   <title>신종 코로나 정보</title>
+  <script src="http://developers.kakao.com/sdk/js/kakao.min.js"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans&display=swap&subset=korean" rel="stylesheet"> 
   <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -24,7 +27,7 @@
     <div id="main">
       <div style="background-color:black;color:white">신종코로나 실시간 상황 전파</div>
       <div id="navigation" class="navs">
-        <div class="navBtn" style="color:red">한국 상황<div style="position: relative;"><i></i></div></div>
+        <div class="navBtn" style="color:red;">한국 상황<div style="position: relative;"><i></i></div></div>
         <div class="navBtn">세계 상황<div style="position: relative;"></div></div>
       </div><br>
       <span style="color:red;font-family: Recipekorea;padding:10px">●LIVE</span>
@@ -47,13 +50,65 @@
 					<span>사망</span>
 				</div>
     </div>
+
+
+
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Black+Han+Sans:400'); 
+        @import url('https://fonts.googleapis.com/css?family=Black+Han+Sans&display=swap&subset=korean'); 
+        .fakebox{
+          font-family: 'Black Han Sans', sans-serif;
+          background-color:white;
+          position:absolute;
+          top:-70px;
+          right:0px; border:10px solid red;
+          width:80px;
+          text-align:center;
+          padding:10px;
+          font-size:15pt;
+          transform:rotate(-25deg);
+        }
+    </style>
     <hr>
     CORONA-19 FACT CHECK
-    <div style="display:flex;justify-content:center;flex-direction:column">
-    <img width="90%" src="http://cdn.kukinews.com/data/photos/cdn/20200209/art_753211_15825266150.jpg">
-    </div>
-    <div style="border:3px solid red;width:30%;text-align:center;">FAKE</div>
+      <div style="display:flex;justify-content:center;">
+      <img width="90%" src="http://cdn.kukinews.com/data/photos/cdn/20200209/art_753211_15825266150.jpg">
+      </div>
+      <div style="position:relative">
+      <div class="fakebox">FAKE</div>
+      </div>
+    <div style="display:flex;flex-direction:column;align-items:center;">
+      <div style="width:90%">팩트는</div>
+      <div style="width:90%;border:2px solid #d9d9d9;padding:8px;box-sizing:border-box">
+          <div style="white-space: nowrap;text-overflow:ellipsis;overflow: hidden"><b>부산 사상구 빵집서 신천지 확진자 끌려가” 가짜뉴..</b></div>
+        <span style="color:gray">http://www.kukinews.com/news/article.html?no=753211</span><br>
+        기사확인
+      </div>
+      <button id="save" type='button' class="fb-share-button" >
+          <img width="18px"src="{% static 'HOAY/kakaoBtn.png' %}">
+          <span>공유하기</span>
+          </button>
     
+
+
+    </div>
+        <div style="display:flex;justify-content:center;">
+        <img width="90%" src="  http://d.kbs.co.kr/data/fckeditor/new/image/20200224ls10.jpg">
+    
+        </div>
+        <div style="position:relative">
+        <div class="fakebox">FAKE</div>
+        
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <div style="width:90%">팩트는</div>
+          <div style="width:90%;border:2px solid #d9d9d9;padding:8px;box-sizing:border-box">
+            <div style="white-space: nowrap;text-overflow:ellipsis;overflow: hidden"><b>춘해보건대 "총장 명의 도용한 코로나19 예방법은 가짜...</b></div>
+            <span style="color:gray">https://www.hankyung.com/society/article/202002240268Y </span><br>
+            기사확인
+          </div>
+        </div>
+  
+    </div>
     <hr>
 			<!-- 맵 -->
 			<div id="map" style="width:100%;height:400px;"></div>
@@ -91,6 +146,7 @@
     <div class="textNotice">
       실시간 정보를 공유
     </div>
+ 
     <div class="btnBox">
         <div class="circleBtn">
             <svg  aria-hidden="true" focusable="false" data-prefix="fab" data-icon="instagram" class="svg-inline--fa fa-instagram fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path></svg>
@@ -249,7 +305,42 @@ new numberCounter("counter2", 298);
 new numberCounter("counter3", 0);
 new numberCounter("counter4", 0);
 
+
+$(function () {
+      //kakao
+      $("#save").click(function () {
+          sendLinkKakao('1');
+      });
+      
+
+Kakao.init('4225e55822643a967aae27240473a7e6');
+    function sendLinkKakao(num) {
+      Kakao.Link.sendDefault({
+        objectType: 'feed',
+        content: {
+          title: '나의 동안지수는?',
+          description: '나는 상위 입니다. ',
+          imageUrl: 'http://hoopa.fun/static/resultImg/image' + num + '.png',
+          imageWidth : 1200,
+          imageHeight : 630,
+          link: {
+            mobileWebUrl: 'http://hoopa.fun/hoay',
+            webUrl: 'http://hoopa.fun/hoay'
+          }
+        },
+        buttons: [
+          {
+            title: '테스트하기',
+            link: {
+              mobileWebUrl: 'http://hoopa.fun/hoay',
+              webUrl: 'http://hoopa.fun/hoay'
+            }
+          }
+        ]
+      });
+    }
   </script>
+  
   <style>
   @font-face { font-family: 'Recipekorea'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/Recipekorea.woff') format('woff'); font-weight: normal; font-style: normal; }
   #header {
@@ -302,17 +393,20 @@ i{
   height:100%;
 }
 #main{
+  height:100%;
   width:800px;
   max-width:800px;
   background-color:white;
-  height: 100%;
+  
 }
 .navs{
+  
   transition:0.2s;
   background-color:#37383f;
 }
 #navigation{
   color:black;
+  z-index:10;
   box-sizing: border-box;
   transition:0.2s;
   color:red;
@@ -398,7 +492,7 @@ a:visited{
   width:100%;
   max-width:800px;
   background-color:white;
-  height: 100%;
+  
 }
 
 }
