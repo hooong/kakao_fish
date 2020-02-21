@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 
 import requests
 from .models import *
+# from tag.models import Tag
 import re
 def coIndex(request):
     # driver = webdriver.Firefox()
@@ -38,5 +39,40 @@ def coIndex(request):
     news = News.objects.all().order_by('-id')[:10]
     # print(news)
     context = {'news':news}
+    boards = Board.objects.order_by('-id')
+    return render(request, 'index.html', {'context':context,'boards':boards})
 
-    return render(request, 'index.html', context)
+
+
+def board_write(request):
+    if not request.session.get('user'):
+        return redirect('/users/login')
+
+    if request.method == "GET":
+        form = BoardForm()
+
+    elif request.method == "POST":
+        form = BoardForm(request.POST)
+        if form.is_valid():
+            user_id = request.session.get('user')
+            user = Users.objects.get(pk = user_id)
+            new_board = Board(
+                title = form.cleaned_data['title'],
+                contents = form.cleaned_data['contents'],
+                writer = user
+            )
+            new_board.save()
+
+            ### 태그 추가 부분 ###
+            tags = form.cleaned_data['tag'].split(',')
+            for tag in tags:
+                if not tag : 
+                    continue
+                else:
+                    tag = tag.strip()
+                    tag_, created = Tag.objects.get_or_create(name = tag)
+                    new_board.tag.add(tag_)
+
+            return redirect('/board/list')
+
+    return render(request, 'board_write.html', {'form' :form})
