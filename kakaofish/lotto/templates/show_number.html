@@ -3,9 +3,16 @@
 {% for o, num in nums %}
     {{o}} 
     {% for i in num %}
-        {{i}}
+    <div class="nStyle">{{i}}</div>
     {% endfor %}
     <br>
 {% endfor %}
 <hr>
+<style>
+.nStyle{
+    display:inline-block;
+    width:30px;
+    text-align: center;
+}
+</style>
 <button><a href="{% url 'start' %}">다시 추첨하기</a></button>
