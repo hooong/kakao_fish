@@ -82,7 +82,7 @@
         <div style="white-space: nowrap;text-overflow:ellipsis;overflow: hidden;color:gray">{{blist.link}}</div>
         기사확인
       </div>
-      <button class="save" type='button' onclick="sendLinkKakao('#{{blist.tag.all | join:, #}}','{{blist.thumbImg}}')">
+      <button class="save" type='button' onclick="sendLinkKakao('{{blist.thumbImg}}','{{blist.thumbImg}}')">
           <img width="18px"src="{% static 'HOAY/kakaoBtn.png' %}">
           <span>공유하기</span>
         </button>
