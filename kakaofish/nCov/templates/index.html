@@ -62,7 +62,7 @@
     {% for blist in boards.all %}
 
       <div style="display:flex;align-items:center;flex-direction:column;">
-          <div id="k_tag{{blist.id}}"style="color:#666666;width:90%">#{{blist.tag.all | join:", #"}}</div>
+          <div id="k_tag{{blist.id}}"style="color:#666666;width:90%;margin-top:10px">#{{blist.tag.all | join:", #"}}</div>
 
       <!-- <img width="90%" src="http://cdn.kukinews.com/data/photos/cdn/20200209/art_753211_15825266150.jpg"> -->
       <img style="width:90%"src="http://hoopa.fun/media/{{blist.thumbImg}}">
@@ -76,13 +76,13 @@
       {%endif%}
       </div>
     <div style="display:flex;flex-direction:column;align-items:center;">
-      <div style="width:90%">팩트는</div>
+      <!-- <div style="width:90%">팩트는</div> -->
       <div style="width:90%;border:2px solid #d9d9d9;padding:8px;box-sizing:border-box">
           <div style="white-space: nowrap;text-overflow:ellipsis;overflow: hidden"><b>{{blist.title}}</b></div>
         <div style="white-space: nowrap;text-overflow:ellipsis;overflow: hidden;color:gray">{{blist.link}}</div>
         기사확인
       </div>
-      <button class="save" type='button' onclick="sendLinkKakao('{{blist.id}}','{{blist.thumbImg}}')">
+      <button class="save fb-share-button" type='button' onclick="sendLinkKakao('{{blist.id}}','{{blist.thumbImg}}')" >
           <img width="18px"src="{% static 'HOAY/kakaoBtn.png' %}">
           <span>공유하기</span>
         </button>
@@ -103,7 +103,7 @@
     Kakao.Link.sendDefault({
       objectType: 'feed',
       content: {
-        title: '코로나 팩트체크',
+        title: '코로나 팩트체크/🚨',
         description: document.getElementById("k_tag"+k_id).innerText,
         imageUrl: 'http://hoopa.fun/media/'+k_img,
         imageWidth : 500,
