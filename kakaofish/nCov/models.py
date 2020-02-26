@@ -28,7 +28,6 @@ class Board(models.Model):
         return self.title
 
     class Meta:
-        db_table = "community_board"
         verbose_name = "게시물"
         verbose_name_plural = "게시물"
 
@@ -41,6 +40,5 @@ class Tag(models.Model):
         return self.name
 
     class Meta:
-        db_table = "community_tag"
         verbose_name = "태그"
         verbose_name_plural = "태그"
