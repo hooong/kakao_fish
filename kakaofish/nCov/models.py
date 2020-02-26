@@ -7,17 +7,7 @@ class News(models.Model):
     pubDate = models.CharField(max_length=255)
 
 
-class Tag(models.Model):
-    name = models.CharField(max_length=32, verbose_name="태그명")
-    registered_date = models.DateTimeField(auto_now_add=True, verbose_name="등록시간")
 
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        db_table = "community_tag"
-        verbose_name = "태그"
-        verbose_name_plural = "태그"
 
 
 class Board(models.Model):
@@ -43,3 +33,14 @@ class Board(models.Model):
         verbose_name_plural = "게시물"
 
 
+class Tag(models.Model):
+    name = models.CharField(max_length=32, verbose_name="태그명")
+    registered_date = models.DateTimeField(auto_now_add=True, verbose_name="등록시간")
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        db_table = "community_tag"
+        verbose_name = "태그"
+        verbose_name_plural = "태그"
