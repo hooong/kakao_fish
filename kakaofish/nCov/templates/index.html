@@ -82,7 +82,7 @@
         <div style="white-space: nowrap;text-overflow:ellipsis;overflow: hidden;color:gray">{{blist.link}}</div>
         기사확인
       </div>
-      <button id="save" type='button'>
+      <button class="save" type='button' onclick="sendLinkKakao('#{{blist.tag.all | join:, #}}','{{blist.thumbImg}}')">
           <img width="18px"src="{% static 'HOAY/kakaoBtn.png' %}">
           <span>공유하기</span>
         </button>
@@ -92,14 +92,14 @@
     <script type='text/javascript'>
     
         Kakao.init('4225e55822643a967aae27240473a7e6');
-        
-        function sendLinkKakao() {
+
+        function sendLinkKakao(k_tag, k_img) {
       Kakao.Link.sendDefault({
         objectType: 'feed',
         content: {
           title: '코로나 팩트체크',
-          description: '#{{blist.tag.all | join:", #"}}',
-          imageUrl: 'http://hoopa.fun/media/{{blist.thumbImg}}',
+          description: k_tag,
+          imageUrl: 'http://hoopa.fun/media/'+k_img,
           imageWidth : 500,
           imageHeight : 500,
           link: {
@@ -322,7 +322,7 @@ new numberCounter("counter1", 989);
 new numberCounter("counter2", 298);
 new numberCounter("counter3", 0);
 new numberCounter("counter4", 0);
-$('#save').click(function(){
+$('.save').click(function(){
   sendLinkKakao();
 })
   </script>
