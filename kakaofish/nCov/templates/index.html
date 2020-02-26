@@ -62,7 +62,7 @@
     {% for blist in boards.all %}
 
       <div style="display:flex;align-items:center;flex-direction:column;">
-          <div style="color:#666666;width:90%">#{{blist.tag.all | join:", #"}}</div>
+          <div id="k_tag{{blist.id}}"style="color:#666666;width:90%">#{{blist.tag.all | join:", #"}}</div>
 
       <!-- <img width="90%" src="http://cdn.kukinews.com/data/photos/cdn/20200209/art_753211_15825266150.jpg"> -->
       <img style="width:90%"src="http://hoopa.fun/media/{{blist.thumbImg}}">
@@ -90,7 +90,7 @@
     
 
     <script type='text/javascript'>
-    
+        
         Kakao.init('4225e55822643a967aae27240473a7e6');
 
         function sendLinkKakao(k_tag, k_img) {
@@ -98,7 +98,7 @@
         objectType: 'feed',
         content: {
           title: '코로나 팩트체크',
-          description: k_tag,
+          description: document.getElementById("k_tag{{blist.id}}").innerText,
           imageUrl: 'http://hoopa.fun/media/'+k_img,
           imageWidth : 500,
           imageHeight : 500,
