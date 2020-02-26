@@ -65,7 +65,7 @@
           <div style="color:#666666;width:90%">#{{blist.tag.all | join:", #"}}</div>
 
       <!-- <img width="90%" src="http://cdn.kukinews.com/data/photos/cdn/20200209/art_753211_15825266150.jpg"> -->
-      <img style="width:90%"src="/media/{{blist.thumbImg}}">
+      <img style="width:90%"src="http://hoopa.fun/media/{{blist.thumbImg}}">
       </div>
       <div style="position:relative">
       
@@ -91,7 +91,7 @@
 
     <script type='text/javascript'>
     
-        Kakao.init('736b60b28d901c91ec8d68d2219bea21');
+        Kakao.init('4225e55822643a967aae27240473a7e6');
         
         function sendLinkKakao() {
       Kakao.Link.sendDefault({
@@ -99,9 +99,9 @@
         content: {
           title: '코로나 팩트체크',
           description: '#{{blist.tag.all | join:", #"}}',
-          imageUrl: 'http://hoopa.fun/media/{{blist.thumbImg}}.png',
-          imageWidth : 1200,
-          imageHeight : 630,
+          imageUrl: 'http://hoopa.fun/media/{{blist.thumbImg}}',
+          imageWidth : 500,
+          imageHeight : 500,
           link: {
             mobileWebUrl: 'http://hoopa.fun/n_corona/',
             webUrl: 'http://hoopa.fun/n_corona/'

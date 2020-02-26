@@ -40,5 +40,6 @@ def coIndex(request):
     # print(news)
     context = {'news':news}
     boards = Board.objects.order_by('-id')
-    return render(request, 'index.html', {'context':context})
+
+    return render(request, 'index.html', {'context':context,'boards':boards})
 
