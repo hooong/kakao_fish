@@ -26,33 +26,8 @@ height:100%;
 margin:0px;
 background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/debut_light.png");
 }
-
-i{
-position:absolute;
-
-bottom:-15px;
-
-display: inline-block;
-width:60px;
-height:0.1rem;
-margin:auto;
-background-color:red;
-}
-
-.innerFlexbox{
-padding:15px;
-display:flex;
-justify-content:center;
-
-}
-.flexbox{
-display:flex;
-justify-content:center;
-/* height:100%; */
-}
-
-
 .fb-share-button {
+  margin-top:10px;
   border:1px solid #3b5998;
   background: #3b5998;
   border-radius: 3px;
@@ -86,6 +61,32 @@ justify-content:center;
   font-size: 14px;
   padding: 0 3px
 }
+i{
+position:absolute;
+
+bottom:-15px;
+
+display: inline-block;
+width:60px;
+height:0.1rem;
+margin:auto;
+background-color:red;
+}
+
+.innerFlexbox{
+padding:15px;
+display:flex;
+justify-content:center;
+
+}
+.flexbox{
+display:flex;
+justify-content:center;
+/* height:100%; */
+}
+
+
+
 #main{
 height:100%;
 width:800px;
