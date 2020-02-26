@@ -17,7 +17,7 @@ class Board(models.Model):
     registered_date = models.DateTimeField(auto_now_add=True, verbose_name = "등록 시간")
     thumbImg = models.ImageField(upload_to="thumb_Img")
     ### 태그 추가 부분 ###
-    tag = models.ManyToManyField('nCov.Tag', verbose_name = "태그")
+    tag = models.ManyToManyField(Tag, verbose_name = "태그")
     COLOR_CHOICE = (
     ('R', 'RED'),
     ('B', 'BLUE')
