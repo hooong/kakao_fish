@@ -3,6 +3,7 @@
 <html>
 <head>
   <title>신종 코로나 정보</title>
+  <meta name="naver-site-verification" content="552afc285764d2fcd75b7365865337f70edc1fbf"/>
   <link rel="stylesheet" href="{% static 'nCov/css/index.css' %}">
   <script src="http://developers.kakao.com/sdk/js/kakao.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans&display=swap&subset=korean" rel="stylesheet"> 
@@ -25,7 +26,7 @@
 
   <div class="flexbox">
     <div id="main">
-      <div style="background-color:black;color:white">신종코로나 실시간 상황 전파</div>
+      <div style="background-color:black;color:white">코로나 팩트체크</div>
       <div id="navigation" class="navs">
         <div class="navBtn" style="color:red;">한국 상황<div style="position: relative;"><i></i></div></div>
         <div class="navBtn">세계 상황<div style="position: relative;"></div></div>
@@ -324,7 +325,7 @@ var nav = document.getElementById("navigation");
 new numberCounter("counter1", 1595);
 new numberCounter("counter2", 56395);
 new numberCounter("counter3", 24);
-new numberCounter("counter4", 12);
+new numberCounter("counter4", 13);
 $('.save').click(function(){
   sendLinkKakao();
 })
