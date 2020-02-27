@@ -5,7 +5,7 @@ import requests
 # 스케쥴러 생성
 def schedule():
     sched = BackgroundScheduler()
-    sched.add_job(crawling_news, 'cron', minute='0,30,15')
+    sched.add_job(crawling_news, 'cron', minute='0,30')
     sched.start()
 
 def crawling_news():
