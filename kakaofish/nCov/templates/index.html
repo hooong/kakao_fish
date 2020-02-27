@@ -88,7 +88,7 @@
         <div style="white-space: nowrap;text-overflow:ellipsis;overflow: hidden;color:gray">{{blist.link}}</div>
         기사확인
       </div>
-      <button class="save fb-share-button" type='button' onclick="sendLinkKakao('{{blist.id}} {{blist.title}}','{{blist.thumbImg}}')" >
+      <button class="save fb-share-button" type='button' onclick="sendLinkKakao('{{blist.id}}','{{blist.thumbImg}}','{{blist.title}}')" >
           <img width="18px"src="{% static 'HOAY/kakaoBtn.png' %}">
           <span>공유하기</span>
         </button>
@@ -105,12 +105,12 @@
         
       Kakao.init('4225e55822643a967aae27240473a7e6');
 
-      function sendLinkKakao(k_id, k_img) {
+      function sendLinkKakao(k_id, k_img,k_title) {
     Kakao.Link.sendDefault({
       objectType: 'feed',
       content: {
         title: '코로나 팩트체크/🚨',
-        description: document.getElementById("k_tag"+k_id).innerText,
+        description: document.getElementById("k_tag"+k_id).innerText +" "+k_title,
         imageUrl: 'http://hoopa.fun/media/'+k_img,
         imageWidth : 500,
         imageHeight : 500,
