@@ -33,10 +33,10 @@
     <div id="main">
       <div style="background-color:black;color:white">팩트체크 코로나</div>
       <div id="navigation" class="navs">
-        <div class="navBtn" style="color:red;">한국 상황<div style="position: relative;"><i></i></div></div>
-        <div class="navBtn" onclick="location.href='/n_corona/goodnews'">괴담보다 미담<div style="position: relative;"></div></div>
+        <div class="navBtn" style="color:red;">국내 상황<div style="position: relative;"><i></i></div></div>
+        <div class="navBtn"><a href="/n_corona/goodnews">괴담보다 미담</a><div style="position: relative;"></div></div>
       </div><br>
-      <span style="color:red;font-family: Recipekorea;padding:10px">●LIVE</span>
+      <!-- <span style="color:red;font-family: Recipekorea;padding:10px">●LIVE</span> -->
       <div class="innerFlexbox">
 
 				<div id="infected">
@@ -64,6 +64,7 @@
     </style>
     <hr>
     <b style="margin-left:10px">CORONA-19 FACT CHECK</b>
+    
     {% for blist in boards.all %}	
 
     <div style="display:flex;align-items:center;flex-direction:column;">	
@@ -99,7 +100,6 @@
 
   {% endfor %}
   
-    
 
     <script type='text/javascript'>
         
