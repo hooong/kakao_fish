@@ -41,59 +41,12 @@
     </div>
 
 
-
-    <style>
-        
-    </style>
-    <hr>
-    CORONA-19 FACT CHECK
-
-  
-    
-
-    <script type='text/javascript'>
-        
-      Kakao.init('4225e55822643a967aae27240473a7e6');
-
-      function sendLinkKakao(k_id, k_img) {
-    Kakao.Link.sendDefault({
-      objectType: 'feed',
-      content: {
-        title: '코로나 팩트체크/🚨',
-        description: document.getElementById("k_tag"+k_id).innerText + " " +document.getElementById("k_title"+k_id).innerText,
-        imageUrl: 'http://hoopa.fun/media/'+k_img,
-        imageWidth : 500,
-        imageHeight : 500,
-        link: {
-          mobileWebUrl: 'http://hoopa.fun/n_corona/',
-          webUrl: 'http://hoopa.fun/n_corona/'
-        }
-      },
-      buttons: [
-        {
-          title: '자세히보기',
-          link: {
-            mobileWebUrl: 'http://hoopa.fun/n_corona/',
-            webUrl: 'http://hoopa.fun/n_corona/'
-          }
-        }
-      ]
-    });
-  }
-    //]]>
-  </script>
-
-    <hr>
 			<!-- 맵 -->
 			<!-- <div id="map" style="width:100%;height:400px;"></div> -->
 
 			<hr>
 
-			<img width="100%" src="http://www.cdc.go.kr/html/a2/namoimage/images/000016/0129_[A4%EA%B0%80%EB%A1%9C]_%EA%B5%AD%EB%AC%B8_%EC%98%88%EB%B0%A9%EC%88%98%EC%B9%99_%EB%B8%94%EB%A3%A8%ED%8F%AC%EC%8A%A4%ED%84%B0_%EA%B0%90%EC%97%BC%EB%B3%91_%EC%98%88%EB%B0%A9%EC%88%98%EC%B9%99_CS3.jpg">
-			<div style="color:#666666; text-align:center;">감염이 의심될 땐 관할 보건소 또는 1339, 지역번호 + 120</div>
-			<!-- <div style="height:1900px;width:10px;"></div> -->
-			<!-- <div id="graph"></div> -->
-		
+			<div style="padding:10px;">
 			{% for new in news %}
 				<br>
 				<a href="{{new.link}}">{{new.title}}</a><br>
@@ -101,15 +54,20 @@
 				{{new.pubDate}}
 				<br>
 				<hr>
-			{% endfor %}
-
+            {% endfor %}
+            <img width="100%" src="http://www.cdc.go.kr/html/a2/namoimage/images/000016/0129_[A4%EA%B0%80%EB%A1%9C]_%EA%B5%AD%EB%AC%B8_%EC%98%88%EB%B0%A9%EC%88%98%EC%B9%99_%EB%B8%94%EB%A3%A8%ED%8F%AC%EC%8A%A4%ED%84%B0_%EA%B0%90%EC%97%BC%EB%B3%91_%EC%98%88%EB%B0%A9%EC%88%98%EC%B9%99_CS3.jpg">
+    <div style="color:#666666; text-align:center;">감염이 의심될 땐 관할 보건소 또는 1339, 지역번호 + 120</div>
+            </div>
 
 			
 
 		</div>
-
+        
 		
 	</div>
+    <!-- <div style="height:1900px;width:10px;"></div> -->
+    <!-- <div id="graph"></div> -->
+
 
 
   </div>
