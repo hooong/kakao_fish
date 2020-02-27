@@ -11,3 +11,4 @@ media
 .static_root/
 settings_common.json
 settings.py
+migrations/

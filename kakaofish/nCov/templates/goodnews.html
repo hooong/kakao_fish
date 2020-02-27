@@ -33,28 +33,11 @@
     <div id="main">
       <div style="background-color:black;color:white">팩트체크 코로나</div>
       <div id="navigation" class="navs">
-        <div class="navBtn" style="color:red;">한국 상황<div style="position: relative;"><i></i></div></div>
-        <div class="navBtn" onclick="location.href='/n_corona/goodnews'">괴담보다 미담<div style="position: relative;"></div></div>
+        <div class="navBtn" onclick="location.href='/n_corona'">국내 상황<div style="position: relative;"></div></div>
+        <div class="navBtn"style="color:red;">괴담보다 미담<div style="position: relative;"><i style="width:90px;"></i></div></div>
       </div><br>
-      <!-- <span style="color:red;font-family: Recipekorea;padding:10px">●LIVE</span> -->
       <div class="innerFlexbox">
-
-				<div id="infected">
-					<p id="counter1"></p>
-					<span>확진자</span>
-				</div>
-				<div id="suspiciousVirusHolder">
-					<p id="counter2"></p>
-					<span>유증상자</span>
-				</div>
-					<div id="quarantine">
-					<p id="counter3"></p>
-					<span>치료</span>
-				</div>
-					<div id="death">
-						<p id="counter4"></p>
-					<span>사망</span>
-				</div>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/p2OZJlQssig" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 
 
@@ -151,82 +134,8 @@
         </button>
     </div>
     </div>
-    <!-- <div id="header">이부분이 움직인다</div> -->
-</body>
+    <script>
 
-<!-- 그래프 -->
-<script src="https://d3js.org/d3.v5.min.js"></script>
-<script>
-	var gr_w = window.innerWidth-40;
-	var gr_h = 300;
-	var margin = {top:40, right:0, bottom:50, left:30};
-	
-	var x_scale = d3.scaleTime().range([0, gr_w]);
-	var y_scale = d3.scaleLinear().range([gr_h, 0]); // Y축 좌표계 변경
-	
-	var x_axis = d3.axisBottom(x_scale)
-					.tickFormat(function(d){
-						return (d.getMonth()+1) + "월" + (d.getDate()) + "일";
-					});
-	var y_axis = d3.axisLeft(y_scale).ticks(30);
-	
-	var svg = d3.select("#graph")
-				.append("svg")
-				.attr("width", gr_w + margin.left + margin.right)
-				.attr("height", gr_h + margin.top + margin.bottom)
-				.append("g")
-				.attr("transform", `translate(${margin.left},${margin.top})`);
-				
-	var line = d3.line()
-				.x(function(d) { return x_scale(d.date); })
-				.y(function(d) { return y_scale(d.value); })
-				.curve(d3.curveMonotoneX);
-				
-	d3.csv("{% static 'data/corona.csv' %}").then(function(data) {
-		data.forEach(d => {
-			d.date = new Date(d.date);
-			d.value = +d.value; // string->float : +가 parseFloat보다 빠르다. parseFloat(data.value);
-		});
-	
-		x_scale.domain(d3.extent(data, d => d.date));
-		y_scale.domain([
-		d3.min(data, function(d) { return d.value; }),
-		d3.max(data, function(d) { return d.value; })
-		]);
-		
-		svg.append("path")
-			.datum(data)
-			.attr("class", "line")
-			.attr("d", line);
-		
-		svg.append("g")
-			.attr("class", "y axis")
-			.call(y_axis);
-
-		svg.append("g")
-			.attr("class", "x axis")
-			.attr("transform", `translate(0, ${gr_h})`)
-			.call(x_axis);
-
-		svg.selectAll(".dot")
-			.data(data)
-			.enter().append("circle") // Uses the enter().append() method
-			.attr("class", "dot") // Assign a class for styling
-			.attr("cx", function(d) { return x_scale(d.date) })
-			.attr("cy", function(d) { return y_scale(d.value) })
-			.attr("r", 5)
-	});
-</script>
-<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-
-
-
-<!-- 코로나맵 -->
-<script type="text/javascript" src="{% static 'js/map.js' %}"></script>
-
-<!-- 이건 뭐임? -->
-<!-- 주석을 생활화 하시오./ -->
-<script>
   $(function(){
     var lastScrollTop = 0, delta = 15;
     $(window).scroll(function(event){
@@ -260,45 +169,8 @@ var nav = document.getElementById("navigation");
     var fBar = document.getElementById("fBar");
     fBar.classList.add('slideOutDown');
     
-  }
-    // var nav = document.getElementById("navigation");
-    // var navbtn = document.getElementsByClassName("navBtn");
-    // var enters = document.getElementById("enters");
-    // window.onscroll = function(ev) {*
-    // if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-    //     alert("you're at the bottom of the page");
-    // }*
-
-    function numberCounter(target_frame, target_number){
-      this.count =0;
-      this.diff = 0;
-      this.target_count=parseInt(target_number);
-      this.target_frame=document.getElementById(target_frame);
-      this.timer = null;
-      this.counter();
-    };
-    numberCounter.prototype.counter = function() {
-    var self = this;
-    this.diff = this.target_count - this.count;
-     
-    if(this.diff > 0) {
-        self.count += Math.ceil(this.diff / 5);
     }
-     
-    this.target_frame.innerHTML = this.count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-     
-    if(this.count < this.target_count) {
-        this.timer = setTimeout(function() { self.counter(); }, 20);
-    } else {
-        clearTimeout(this.timer);
-    }
-};
+    </script>
+</body>
 
-new numberCounter("counter1", 1595);
-new numberCounter("counter2", 56395);
-new numberCounter("counter3", 24);
-new numberCounter("counter4", 13);
-$('.save').click(function(){
-  sendLinkKakao();
-})
-  </script>
+</html>
