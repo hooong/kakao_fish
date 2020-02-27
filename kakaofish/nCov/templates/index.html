@@ -75,9 +75,9 @@
       <div class="fakebox2">{{blist.contents}}</div>
       {%endif%}
       </div>
-    <div style="display:flex;flex-direction:column;align-items:center;margin-top:10px;" onclick="location.href='{{blist.link}}'">
+    <div style="display:flex;flex-direction:column;align-items:center;margin-top:10px;" >
       <!-- <div style="width:90%">팩트는</div> -->
-      <div style="width:90%;border:2px solid #d9d9d9;padding:8px;box-sizing:border-box">
+      <div style="width:90%;border:2px solid #d9d9d9;padding:8px;box-sizing:border-box" onclick="location.href='{{blist.link}}'">
           <div style="white-space: nowrap;text-overflow:ellipsis;overflow: hidden"><b>{{blist.title}}</b></div>
         <div style="white-space: nowrap;text-overflow:ellipsis;overflow: hidden;color:gray">{{blist.link}}</div>
         기사확인
@@ -321,8 +321,8 @@ var nav = document.getElementById("navigation");
     }
 };
 
-new numberCounter("counter1", 1261);
-new numberCounter("counter2", 44981);
+new numberCounter("counter1", 1595);
+new numberCounter("counter2", 56395);
 new numberCounter("counter3", 24);
 new numberCounter("counter4", 12);
 $('.save').click(function(){
