@@ -3,6 +3,12 @@
 <html>
 <head>
   <title>신종 코로나 정보</title>
+  <meta property="og:type" content="website"> 
+  <meta property="og:title" content="팩트체크 코로나">
+  <meta property="og:description" content="코로나 가짜뉴스 팩트체크">
+  <!-- <meta property="og:image" content="http://www.mysite.com/myimage.jpg"> -->
+  <meta property="og:url" content="http://hoopa.fun">
+
   <link rel="stylesheet" href="{% static 'nCov/css/index.css' %}">
   <script src="http://developers.kakao.com/sdk/js/kakao.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans&display=swap&subset=korean" rel="stylesheet"> 
@@ -25,12 +31,12 @@
 
   <div class="flexbox">
     <div id="main">
-      <div style="background-color:black;color:white">신종코로나 실시간 상황 전파</div>
+      <div style="background-color:black;color:white">팩트체크 코로나</div>
       <div id="navigation" class="navs">
-        <div class="navBtn" style="color:red;">한국 상황<div style="position: relative;"><i></i></div></div>
-        <div class="navBtn">세계 상황<div style="position: relative;"></div></div>
+        <div class="navBtn" style="color:red;">국내 상황<div style="position: relative;"><i></i></div></div>
+        <div class="navBtn"><a href="/n_corona/goodnews">괴담보다 미담</a><div style="position: relative;"></div></div>
       </div><br>
-      <span style="color:red;font-family: Recipekorea;padding:10px">●LIVE</span>
+      <!-- <span style="color:red;font-family: Recipekorea;padding:10px">●LIVE</span> -->
       <div class="innerFlexbox">
 
 				<div id="infected">
@@ -57,83 +63,86 @@
         
     </style>
     <hr>
-    CORONA-19 FACT CHECK
-
-    {% for blist in boards.all %}
-
-      <div style="display:flex;align-items:center;flex-direction:column;">
-          <div style="color:#666666;width:90%">#{{blist.tag.all | join:", #"}}</div>
-
-      <!-- <img width="90%" src="http://cdn.kukinews.com/data/photos/cdn/20200209/art_753211_15825266150.jpg"> -->
-      <img style="width:90%"src="/media/{{blist.thumbImg}}">
-      </div>
-      <div style="position:relative">
-      
-      {%if blist.color == 'R' %}
-      <div class="fakebox">{{blist.contents}}</div>
-      {% else %}
-      <div class="fakebox2">{{blist.contents}}</div>
-      {%endif%}
-      </div>
-    <div style="display:flex;flex-direction:column;align-items:center;">
-      <div style="width:90%">팩트는</div>
-      <div style="width:90%;border:2px solid #d9d9d9;padding:8px;box-sizing:border-box">
-          <div style="white-space: nowrap;text-overflow:ellipsis;overflow: hidden"><b>{{blist.title}}</b></div>
-        <div style="white-space: nowrap;text-overflow:ellipsis;overflow: hidden;color:gray">{{blist.link}}</div>
-        기사확인
-      </div>
-      <button id="save" type='button'>
-          <img width="18px"src="{% static 'HOAY/kakaoBtn.png' %}">
-          <span>공유하기</span>
-        </button>
-    </div>
+    <b style="margin-left:10px">CORONA-19 FACT CHECK</b>
     
+    {% for blist in boards.all %}	
+
+    <div style="display:flex;align-items:center;flex-direction:column;">	
+        <div id="k_tag{{blist.id}}"style="color:#666666;width:90%;margin-top:10px">#{{blist.tag.all | join:", #"}}</div>	
+
+    <!-- <img width="90%" src="http://cdn.kukinews.com/data/photos/cdn/20200209/art_753211_15825266150.jpg"> -->	
+    <img style="width:90%"src="http://hoopa.fun/media/{{blist.thumbImg}}">	
+    </div>	
+    <div style="position:relative">	
+
+    {%if blist.color == 'R' %}	
+    <div class="fakebox">{{blist.contents}}</div>	
+    {% else %}	
+    <div class="fakebox2">{{blist.contents}}</div>	
+    {%endif%}	
+    </div>	
+  <div style="display:flex;flex-direction:column;align-items:center;margin-top:10px;" >	
+    <!-- <div style="width:90%">팩트는</div> -->	
+    <div style="width:90%;border:2px solid #d9d9d9;padding:8px;box-sizing:border-box" onclick="location.href='{{blist.link}}'">	
+        <div id="k_title{{blist.id}}" style="white-space: nowrap;text-overflow:ellipsis;overflow: hidden"><b>{{blist.title}}</b></div>	
+      <div style="white-space: nowrap;text-overflow:ellipsis;overflow: hidden;color:gray">{{blist.link}}</div>	
+      기사확인	
+    </div>	
+    <button class="save fb-share-button" type='button' onclick="sendLinkKakao('{{blist.id}}','{{blist.thumbImg}}')" >	
+        <img width="18px"src="{% static 'HOAY/kakaoBtn.png' %}">	
+        <span>공유하기</span>	
+      </button>	
+  </div>	
+
+
+
+
+
+  {% endfor %}
+  
 
     <script type='text/javascript'>
-    
-        Kakao.init('736b60b28d901c91ec8d68d2219bea21');
         
-        function sendLinkKakao() {
-      Kakao.Link.sendDefault({
-        objectType: 'feed',
-        content: {
-          title: '코로나 팩트체크',
-          description: '#{{blist.tag.all | join:", #"}}',
-          imageUrl: 'http://hoopa.fun/media/{{blist.thumbImg}}.png',
-          imageWidth : 1200,
-          imageHeight : 630,
+      Kakao.init('4225e55822643a967aae27240473a7e6');
+
+      function sendLinkKakao(k_id, k_img) {
+    Kakao.Link.sendDefault({
+      objectType: 'feed',
+      content: {
+        title: '코로나 팩트체크/🚨',
+        description: document.getElementById("k_tag"+k_id).innerText + " " +document.getElementById("k_title"+k_id).innerText,
+        imageUrl: 'http://hoopa.fun/media/'+k_img,
+        imageWidth : 500,
+        imageHeight : 500,
+        link: {
+          mobileWebUrl: 'http://hoopa.fun/n_corona/',
+          webUrl: 'http://hoopa.fun/n_corona/'
+        }
+      },
+      buttons: [
+        {
+          title: '자세히보기',
           link: {
             mobileWebUrl: 'http://hoopa.fun/n_corona/',
             webUrl: 'http://hoopa.fun/n_corona/'
           }
-        },
-        buttons: [
-          {
-            title: '자세히보기',
-            link: {
-              mobileWebUrl: 'http://hoopa.fun/n_corona/',
-              webUrl: 'http://hoopa.fun/n_corona/'
-            }
-          }
-        ]
-      });
-    }
-      //]]>
-    </script>
+        }
+      ]
+    });
+  }
+    //]]>
+  </script>
 
-
-
-    {% endfor %}
     <hr>
 			<!-- 맵 -->
-			<div id="map" style="width:100%;height:400px;"></div>
+			<!-- <div id="map" style="width:100%;height:400px;"></div> -->
 
 			<hr>
 
 			<img width="100%" src="http://www.cdc.go.kr/html/a2/namoimage/images/000016/0129_[A4%EA%B0%80%EB%A1%9C]_%EA%B5%AD%EB%AC%B8_%EC%98%88%EB%B0%A9%EC%88%98%EC%B9%99_%EB%B8%94%EB%A3%A8%ED%8F%AC%EC%8A%A4%ED%84%B0_%EA%B0%90%EC%97%BC%EB%B3%91_%EC%98%88%EB%B0%A9%EC%88%98%EC%B9%99_CS3.jpg">
 			<div style="color:#666666; text-align:center;">감염이 의심될 땐 관할 보건소 또는 1339, 지역번호 + 120</div>
 			<!-- <div style="height:1900px;width:10px;"></div> -->
-			<div id="graph"></div>
+			<!-- <div id="graph"></div> -->
 		
 			{% for new in news %}
 				<br>
@@ -159,7 +168,7 @@
   
   <div id="fBar"class="floatingBar animated slideInUp">
     <div class="textNotice">
-      실시간 정보를 공유
+      카톡,DM 제보 >>
     </div>
  
     <div class="btnBox">
@@ -167,7 +176,7 @@
             <svg  aria-hidden="true" focusable="false" data-prefix="fab" data-icon="instagram" class="svg-inline--fa fa-instagram fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path></svg>
         </div>
         
-        <div class="circleBtn">
+        <div class="circleBtn" onclick="location.href='http://pf.kakao.com/_xgWPsxb/chat'">
             <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="comment" class="svg-inline--fa fa-comment fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 32C114.6 32 0 125.1 0 240c0 47.6 19.9 91.2 52.9 126.3C38 405.7 7 439.1 6.5 439.5c-6.6 7-8.4 17.2-4.6 26S14.4 480 24 480c61.5 0 110-25.7 139.1-46.3C192 442.8 223.2 448 256 448c141.4 0 256-93.1 256-208S397.4 32 256 32zm0 368c-26.7 0-53.1-4.1-78.4-12.1l-22.7-7.2-19.5 13.8c-14.3 10.1-33.9 21.4-57.5 29 7.3-12.1 14.4-25.7 19.9-40.2l10.6-28.1-20.6-21.8C69.7 314.1 48 282.2 48 240c0-88.2 93.3-160 208-160s208 71.8 208 160-93.3 160-208 160z"></path></svg>
         </div>
         <button class="circleBtn" onclick="closedBar()">
@@ -318,11 +327,11 @@ var nav = document.getElementById("navigation");
     }
 };
 
-new numberCounter("counter1", 989);
-new numberCounter("counter2", 298);
-new numberCounter("counter3", 0);
-new numberCounter("counter4", 0);
-$('#save').click(function(){
+new numberCounter("counter1", 2022);
+new numberCounter("counter2", 68918);
+new numberCounter("counter3", 26);
+new numberCounter("counter4", 13);
+$('.save').click(function(){
   sendLinkKakao();
 })
   </script>
